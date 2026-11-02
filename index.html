@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#123d2d">
+    <meta name="description" content="ग्राम पंचायत की जानकारी, जनप्रतिनिधि परिचय, विकास कार्य और जनसंपर्क।">
+    <title>ग्रामसेतु | ग्राम पंचायत जनसंपर्क</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --g: #174b36;
+            --g2: #216447;
+            --deep: #102a20;
+            --cream: #f7f8f3;
+            --ink: #17221c;
+            --muted: #65736a;
+            --gold: #d8a84e;
+            --line: #e6ebe5;
+            --shadow: 0 18px 50px #13372718;
+            --r: 22px;
+            --max: 1180px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 88px
+        }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--ink);
+            font-family: "Noto Sans Devanagari", "DM Sans", sans-serif;
+            line-height: 1.65
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        img {
+            display: block;
+            max-width: 100%
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 44px));
+            margin: auto
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-size: .78rem;
+            font-weight: 800;
+            color: var(--g2)
+        }
+
+        .eyebrow:before {
+            content: "";
+            height: 2px;
+            width: 24px;
+            background: var(--gold)
+        }
+
+        .section {
+            padding: 82px 0
+        }
+
+        .head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 30px
+        }
+
+        .head h2 {
+            font-size: clamp(1.8rem, 4vw, 2.65rem);
+            line-height: 1.25;
+            margin: 10px 0 0;
+            letter-spacing: -.04em
+        }
+
+        .head p {
+            max-width: 470px;
+            color: var(--muted);
+            margin: 0
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 13px 21px;
+            font-weight: 800;
+            font-size: .92rem;
+            min-height: 48px;
+            transition: .2s
+        }
+
+        .primary {
+            background: var(--g);
+            color: white;
+            box-shadow: 0 8px 20px #174b362e
+        }
+
+        .primary:hover {
+            background: #0e3827;
+            transform: translateY(-2px)
+        }
+
+        .light {
+            background: #fff;
+            color: var(--g);
+            border-color: #dce7de
+        }
+
+        .small {
+            padding: 9px 15px;
+            min-height: 40px;
+            font-size: .84rem
+        }
+
+        .topline {
+            background: var(--deep);
+            color: #e8f0e9;
+            font-size: .78rem;
+            padding: 8px 0
+        }
+
+        .topline .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px
+        }
+
+        .topline strong {
+            color: #f2cf86
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: #ffffffef;
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #e1e9e1
+        }
+
+        .nav {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            min-width: max-content
+        }
+
+        .mark {
+            width: 43px;
+            height: 43px;
+            border-radius: 14px;
+            background: var(--g);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 1.35rem
+        }
+
+        .brandname {
+            font-size: 1.08rem;
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--deep)
+        }
+
+        .sub {
+            font: 600 .64rem "DM Sans", sans-serif;
+            color: #7b887f;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-top: 4px
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            color: #4f5e54;
+            font-size: .86rem;
+            font-weight: 700
+        }
+
+        .links a:hover {
+            color: var(--g)
+        }
+
+        .navright {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .hamb {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--line);
+            background: white;
+            border-radius: 13px;
+            color: var(--g);
+            font-size: 1.3rem
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(118deg, #123d2d, #1c6041 62%, #2b7450);
+            color: white;
+            padding: 58px 0 76px
+        }
+
+        .hero:before {
+            content: "";
+            position: absolute;
+            width: 580px;
+            height: 580px;
+            border: 1px solid #ffffff1c;
+            border-radius: 50%;
+            right: -180px;
+            top: -280px;
+            box-shadow: 0 0 0 45px #ffffff08, 0 0 0 95px #ffffff05
+        }
+
+        .herogrid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.12fr .88fr;
+            align-items: center;
+            gap: 54px
+        }
+
+        .hero .eyebrow {
+            color: #f0cc85
+        }
+
+        .hero h1 {
+            font-size: clamp(2.25rem, 5.1vw, 4.3rem);
+            line-height: 1.19;
+            letter-spacing: -.055em;
+            margin: 18px 0 17px;
+            max-width: 680px
+        }
+
+        .hero h1 span {
+            color: #f1cc82
+        }
+
+        .hero p {
+            color: #ffffffc7;
+            font-size: 1rem;
+            max-width: 590px;
+            margin: 0 0 27px
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px
+        }
+
+        .hero .outline {
+            border-color: #ffffff70;
+            color: white
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 28px;
+            color: #d9e8dc;
+            font-size: .83rem
+        }
+
+        .visual {
+            position: relative;
+            max-width: 430px;
+            width: 100%;
+            margin-left: auto
+        }
+
+        .frame {
+            padding: 11px;
+            border: 1px solid #ffffff45;
+            border-radius: 30px;
+            background: #ffffff1a;
+            transform: rotate(1.5deg)
+        }
+
+        .frame img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            border-radius: 22px
+        }
+
+        .tag {
+            position: absolute;
+            left: -36px;
+            bottom: 28px;
+            background: white;
+            color: var(--deep);
+            padding: 15px 18px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transform: rotate(-2deg)
+        }
+
+        .tag small {
+            display: block;
+            color: var(--muted);
+            font-size: .68rem
+        }
+
+        .tag strong {
+            font-size: .95rem
+        }
+
+        .stamp {
+            position: absolute;
+            right: -18px;
+            top: 25px;
+            border-radius: 50%;
+            width: 86px;
+            height: 86px;
+            background: var(--gold);
+            color: var(--deep);
+            display: grid;
+            place-items: center;
+            text-align: center;
+            font-size: .65rem;
+            line-height: 1.25;
+            font-weight: 900;
+            border: 5px solid #ffffff55
+        }
+
+        .strip {
+            position: relative;
+            margin-top: -34px;
+            z-index: 2
+        }
+
+        .stats {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 22px 10px
+        }
+
+        .stat {
+            text-align: center;
+            padding: 4px 20px;
+            border-right: 1px solid var(--line)
+        }
+
+        .stat:last-child {
+            border: 0
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--g);
+            font: 800 1.8rem "DM Sans", sans-serif
+        }
+
+        .stat span {
+            font-size: .79rem;
+            color: var(--muted);
+            font-weight: 700
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 52px;
+            align-items: center
+        }
+
+        .introimg {
+            position: relative
+        }
+
+        .introimg img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: var(--r)
+        }
+
+        .note {
+            position: absolute;
+            right: -18px;
+            bottom: 22px;
+            background: white;
+            padding: 16px 19px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            max-width: 220px;
+            font-weight: 800;
+            color: var(--g);
+            font-size: .85rem
+        }
+
+        .introcopy h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.28;
+            margin: 11px 0 16px
+        }
+
+        .introcopy p {
+            color: var(--muted);
+            margin: 0 0 15px
+        }
+
+        .checks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 24px 0
+        }
+
+        .check {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: .88rem;
+            font-weight: 700
+        }
+
+        .check i {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #e5f1e8;
+            color: var(--g);
+            display: grid;
+            place-items: center;
+            font-style: normal
+        }
+
+        .soft {
+            background: #eef3ed
+        }
+
+        .filters {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-bottom: 25px
+        }
+
+        .filter {
+            border: 1px solid #dbe5db;
+            background: white;
+            color: #607067;
+            padding: 9px 15px;
+            border-radius: 999px;
+            font-size: .81rem;
+            font-weight: 800
+        }
+
+        .filter.active,
+        .filter:hover {
+            background: var(--g);
+            color: white;
+            border-color: var(--g)
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 19px;
+            overflow: hidden;
+            transition: .25s
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow)
+        }
+
+        .projectimg {
+            height: 205px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .projectimg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s
+        }
+
+        .card:hover .projectimg img {
+            transform: scale(1.05)
+        }
+
+        .status {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+            background: white;
+            border-radius: 999px;
+            padding: 6px 11px;
+            font-size: .7rem;
+            font-weight: 900;
+            color: var(--g)
+        }
+
+        .status.ongoing {
+            color: #925f12;
+            background: #fff4dc
+        }
+
+        .status.proposed {
+            color: #596679;
+            background: #eef1f6
+        }
+
+        .cardbody {
+            padding: 18px
+        }
+
+        .type {
+            font-size: .72rem;
+            color: var(--g2);
+            font-weight: 900
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin: 6px 0 7px;
+            line-height: 1.4
+        }
+
+        .card p {
+            font-size: .82rem;
+            color: var(--muted);
+            margin: 0 0 14px
+        }
+
+        .foot {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            padding-top: 13px;
+            font-size: .76rem;
+            color: #728076
+        }
+
+        .foot a {
+            color: var(--g);
+            font-weight: 900
+        }
+
+        .visions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px
+        }
+
+        .vision {
+            background: white;
+            border: 1px solid var(--line);
+            padding: 23px 19px;
+            border-radius: 18px;
+            min-height: 175px;
+            transition: .2s
+        }
+
+        .vision:hover {
+            border-color: #b4cbb8;
+            transform: translateY(-4px)
+        }
+
+        .vicon {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            background: #eaf3ed;
+            border-radius: 14px;
+            font-size: 1.35rem;
+            margin-bottom: 14px
+        }
+
+        .vision h3 {
+            font-size: 1rem;
+            margin: 0 0 6px
+        }
+
+        .vision p {
+            font-size: .78rem;
+            color: var(--muted);
+            margin: 0
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1.25fr .9fr .9fr;
+            grid-template-rows: 190px 190px;
+            gap: 14px
+        }
+
+        .gallery button {
+            border: 0;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 18px;
+            position: relative;
+            background: #dfe8df
+        }
+
+        .gallery button:first-child {
+            grid-row: span 2
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s
+        }
+
+        .gallery button:hover img {
+            transform: scale(1.05)
+        }
+
+        .gallery button:after {
+            content: "";
+            position: absolute;
+            inset: 45% 0 0;
+            background: linear-gradient(transparent, #0009)
+        }
+
+        .gallery span {
+            position: absolute;
+            z-index: 1;
+            bottom: 13px;
+            left: 15px;
+            color: white;
+            font-weight: 800;
+            font-size: .85rem
+        }
+
+        .updates {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 20px
+        }
+
+        .feature {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            overflow: hidden
+        }
+
+        .feature img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover
+        }
+
+        .updatebody {
+            padding: 22px
+        }
+
+        .date {
+            font-size: .74rem;
+            color: var(--g2);
+            font-weight: 900
+        }
+
+        .updatebody h3 {
+            font-size: 1.3rem;
+            margin: 7px 0;
+            line-height: 1.35
+        }
+
+        .updatebody p {
+            font-size: .86rem;
+            color: var(--muted);
+            margin: 0
+        }
+
+        .updatelist {
+            display: grid;
+            gap: 12px
+        }
+
+        .mini {
+            display: flex;
+            gap: 15px;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 16px
+        }
+
+        .datebox {
+            width: 56px;
+            min-width: 56px;
+            height: 62px;
+            border-radius: 12px;
+            background: #eaf3ed;
+            display: grid;
+            place-content: center;
+            text-align: center;
+            color: var(--g)
+        }
+
+        .datebox strong {
+            font: 800 1.3rem "DM Sans", sans-serif;
+            line-height: 1
+        }
+
+        .datebox span {
+            font-size: .64rem;
+            font-weight: 900
+        }
+
+        .mini h4 {
+            margin: 1px 0 4px;
+            font-size: .91rem;
+            line-height: 1.35
+        }
+
+        .mini p {
+            margin: 0;
+            color: var(--muted);
+            font-size: .76rem
+        }
+
+        .contact {
+            background: var(--deep);
+            color: white;
+            position: relative;
+            overflow: hidden
+        }
+
+        .contact .eyebrow {
+            color: #efc779
+        }
+
+        .contactgrid {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 45px;
+            position: relative;
+            z-index: 1
+        }
+
+        .contactcopy h2 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            line-height: 1.25;
+            margin: 12px 0
+        }
+
+        .contactcopy>p {
+            color: #b8c9bd
+        }
+
+        .detail {
+            display: flex;
+            gap: 13px;
+            align-items: center;
+            margin: 23px 0
+        }
+
+        .symbol {
+            width: 43px;
+            height: 43px;
+            border-radius: 14px;
+            background: #ffffff1c;
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem
+        }
+
+        .detail small {
+            display: block;
+            color: #adc0b3;
+            font-size: .7rem
+        }
+
+        .detail strong {
+            font-size: .9rem
+        }
+
+        .mapbox {
+            margin-top: 25px;
+            border: 1px solid #ffffff2b;
+            border-radius: 16px;
+            padding: 17px;
+            background: #ffffff0f
+        }
+
+        .mapbox strong {
+            display: block;
+            margin-bottom: 3px
+        }
+
+        .mapbox span {
+            font-size: .78rem;
+            color: #b8c9bd
+        }
+
+        .form {
+            background: white;
+            color: var(--ink);
+            padding: 26px;
+            border-radius: 22px;
+            box-shadow: 0 20px 60px #0002
+        }
+
+        .form h3 {
+            margin: 0 0 4px;
+            font-size: 1.25rem
+        }
+
+        .form>p {
+            color: var(--muted);
+            font-size: .82rem;
+            margin: 0 0 18px
+        }
+
+        .formgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .field.full {
+            grid-column: 1/-1
+        }
+
+        .field label {
+            font-size: .77rem;
+            font-weight: 800;
+            color: #46564b
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            border: 1px solid #dfe7df;
+            background: #fbfcfa;
+            border-radius: 11px;
+            padding: 12px 13px;
+            outline: none;
+            font-size: .87rem;
+            min-height: 46px
+        }
+
+        .field textarea {
+            min-height: 100px;
+            resize: vertical
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            border-color: #6c9c7c;
+            box-shadow: 0 0 0 3px #2164471a
+        }
+
+        .hint {
+            font-size: .7rem;
+            color: #7a887e;
+            margin-top: 10px
+        }
+
+        .footer {
+            background: #0b2118;
+            color: #b4c3b8;
+            padding: 30px 0 90px
+        }
+
+        .footerinner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px
+        }
+
+        .footer .brandname {
+            color: white
+        }
+
+        .footerlinks {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            font-size: .78rem
+        }
+
+        .disclaimer {
+            font-size: .7rem;
+            color: #82948a;
+            margin-top: 20px;
+            max-width: 900px
+        }
+
+        .mobilebar {
+            display: none
+        }
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 95px;
+            transform: translate(-50%, 20px);
+            background: #142d20;
+            color: white;
+            padding: 12px 17px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            font-size: .82rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: .25s;
+            z-index: 100;
+            max-width: calc(100% - 30px);
+            text-align: center
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0)
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: #05120cee;
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px
+        }
+
+        .lightbox.open {
+            display: flex
+        }
+
+        .lightbox img {
+            max-width: min(100%, 1000px);
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 12px
+        }
+
+        .lightbox button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border: 0;
+            border-radius: 50%;
+            background: white;
+            color: #102a20;
+            font-size: 1.4rem
+        }
+
+        @media(max-width:980px) {
+            .links {
+                gap: 13px;
+                font-size: .8rem
+            }
+
+            .navright>.btn {
+                display: none
+            }
+
+            .herogrid {
+                gap: 30px
+            }
+
+            .frame img {
+                height: 390px
+            }
+
+            .projects {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .visions {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:720px) {
+            body {
+                font-size: 15px
+            }
+
+            .container {
+                width: min(100% - 32px, var(--max))
+            }
+
+            .topline {
+                font-size: .68rem
+            }
+
+            .topline .container span:last-child {
+                display: none
+            }
+
+            .nav {
+                height: 66px
+            }
+
+            .mark {
+                width: 39px;
+                height: 39px
+            }
+
+            .brandname {
+                font-size: .98rem
+            }
+
+            .hamb {
+                display: block
+            }
+
+            .links {
+                display: none;
+                position: absolute;
+                left: 16px;
+                right: 16px;
+                top: 70px;
+                background: white;
+                padding: 12px;
+                border: 1px solid var(--line);
+                border-radius: 17px;
+                box-shadow: var(--shadow);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0
+            }
+
+            .links.open {
+                display: flex
+            }
+
+            .links a {
+                padding: 12px 13px;
+                border-radius: 10px
+            }
+
+            .links a:hover {
+                background: #eaf3ed
+            }
+
+            .hero {
+                padding: 35px 0 58px
+            }
+
+            .herogrid {
+                grid-template-columns: 1fr;
+                gap: 27px
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+                margin: 13px 0
+            }
+
+            .hero p {
+                font-size: .9rem;
+                line-height: 1.8
+            }
+
+            .actions .btn {
+                flex: 1;
+                padding: 12px 13px;
+                font-size: .83rem
+            }
+
+            .meta {
+                gap: 10px 15px;
+                font-size: .72rem;
+                margin-top: 18px
+            }
+
+            .visual {
+                max-width: 310px;
+                margin: 0 auto
+            }
+
+            .frame {
+                border-radius: 23px;
+                padding: 7px
+            }
+
+            .frame img {
+                height: 300px;
+                border-radius: 17px
+            }
+
+            .tag {
+                left: -12px;
+                bottom: 15px;
+                padding: 10px 13px
+            }
+
+            .tag strong {
+                font-size: .8rem
+            }
+
+            .tag small {
+                font-size: .59rem
+            }
+
+            .stamp {
+                right: -8px;
+                top: 14px;
+                width: 69px;
+                height: 69px;
+                font-size: .55rem;
+                border-width: 3px
+            }
+
+            .strip {
+                margin-top: -23px
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 9px 5px;
+                border-radius: 16px
+            }
+
+            .stat {
+                padding: 12px 5px;
+                border-right: 1px solid var(--line);
+                border-bottom: 1px solid var(--line)
+            }
+
+            .stat:nth-child(2) {
+                border-right: 0
+            }
+
+            .stat:nth-child(3),
+            .stat:nth-child(4) {
+                border-bottom: 0
+            }
+
+            .stat strong {
+                font-size: 1.45rem
+            }
+
+            .stat span {
+                font-size: .68rem
+            }
+
+            .section {
+                padding: 58px 0
+            }
+
+            .head {
+                display: block;
+                margin-bottom: 23px
+            }
+
+            .head p {
+                font-size: .84rem;
+                margin-top: 10px
+            }
+
+            .head h2 {
+                font-size: 1.8rem
+            }
+
+            .intro {
+                grid-template-columns: 1fr;
+                gap: 27px
+            }
+
+            .introimg img {
+                height: 275px
+            }
+
+            .note {
+                right: 10px;
+                bottom: 12px;
+                max-width: 180px;
+                padding: 12px;
+                font-size: .76rem
+            }
+
+            .introcopy h2 {
+                font-size: 1.8rem
+            }
+
+            .introcopy p {
+                font-size: .87rem
+            }
+
+            .checks {
+                gap: 10px
+            }
+
+            .check {
+                font-size: .76rem
+            }
+
+            .filters {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                scrollbar-width: none
+            }
+
+            .filters::-webkit-scrollbar {
+                display: none
+            }
+
+            .filter {
+                white-space: nowrap;
+                flex: 0 0 auto
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+                gap: 15px
+            }
+
+            .projectimg {
+                height: 205px
+            }
+
+            .cardbody {
+                padding: 16px
+            }
+
+            .visions {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px
+            }
+
+            .vision {
+                padding: 16px 14px;
+                min-height: 160px
+            }
+
+            .vision h3 {
+                font-size: .87rem
+            }
+
+            .vision p {
+                font-size: .72rem
+            }
+
+            .vicon {
+                width: 39px;
+                height: 39px;
+                font-size: 1.15rem;
+                margin-bottom: 10px
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 160px 130px 130px;
+                gap: 9px
+            }
+
+            .gallery button:first-child {
+                grid-row: span 2;
+                grid-column: span 2
+            }
+
+            .gallery span {
+                font-size: .74rem;
+                bottom: 9px;
+                left: 11px
+            }
+
+            .updates {
+                grid-template-columns: 1fr;
+                gap: 14px
+            }
+
+            .feature img {
+                height: 200px
+            }
+
+            .updatebody {
+                padding: 17px
+            }
+
+            .updatebody h3 {
+                font-size: 1.1rem
+            }
+
+            .mini {
+                padding: 12px;
+                gap: 11px
+            }
+
+            .datebox {
+                width: 48px;
+                min-width: 48px;
+                height: 56px
+            }
+
+            .contactgrid {
+                grid-template-columns: 1fr;
+                gap: 25px
+            }
+
+            .contactcopy h2 {
+                font-size: 1.85rem
+            }
+
+            .form {
+                padding: 19px;
+                border-radius: 17px
+            }
+
+            .formgrid {
+                grid-template-columns: 1fr;
+                gap: 11px
+            }
+
+            .field.full {
+                grid-column: auto
+            }
+
+            .footer {
+                padding-bottom: 105px
+            }
+
+            .footerinner {
+                display: block
+            }
+
+            .footerlinks {
+                margin-top: 17px;
+                gap: 12px
+            }
+
+            .mobilebar {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 80;
+                background: #fffffff7;
+                backdrop-filter: blur(14px);
+                border-top: 1px solid var(--line);
+                padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+                box-shadow: 0 -8px 25px #13372714
+            }
+
+            .mobilebar a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                color: var(--g);
+                font-size: .77rem;
+                font-weight: 900;
+                min-height: 43px
+            }
+
+            .mobilebar a:nth-child(2) {
+                background: #e8f4ec;
+                border-radius: 12px
+            }
+        }
+
+        @media(max-width:360px) {
+            .hero h1 {
+                font-size: 1.95rem
+            }
+
+            .checks {
+                grid-template-columns: 1fr
+            }
+
+            .actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                scroll-behavior: auto !important;
+                transition: none !important
+            }
+        }
+
+        @media print {
+
+            .topline,
+            .header,
+            .mobilebar,
+            .actions,
+            .contact,
+            .footer,
+            .btn {
+                display: none !important
+            }
+
+            body {
+                background: white
+            }
+
+            .hero {
+                background: white;
+                color: #111;
+                padding: 20px 0
+            }
+
+            .hero p,
+            .meta {
+                color: #333
+            }
+
+            .hero h1 span {
+                color: var(--g)
+            }
+
+            .section {
+                padding: 25px 0
+            }
+
+            .container {
+                width: 100%
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topline">
+        <div class="container"><span>🌿 <strong>हमारा गांव, हमारी पहचान</strong> · ग्राम पंचायत की जन-सूचना
+                वेबसाइट</span><span id="locationLine">ग्राम पंचायत आदर्शपुर · जिला — अपना जिला</span></div>
+    </div>
+    <header class="header">
+        <div class="container nav"><a class="brand" href="#home"><span class="mark">🌱</span><span><span
+                        class="brandname" id="brandName">ग्रामसेतु</span><span class="sub">ग्राम पंचायत ·
+                        जनसंपर्क</span></span></a>
+            <nav class="links" id="navLinks"><a href="#home">होम</a><a href="#about">परिचय</a><a href="#works">विकास
+                    कार्य</a><a href="#vision">हमारा विज़न</a><a href="#gallery">गैलरी</a><a href="#updates">अपडेट</a><a
+                    href="#contact">संपर्क</a></nav>
+            <div class="navright"><a class="btn primary small" href="#contact">संपर्क करें ↗</a><button class="hamb"
+                    id="menuToggle" aria-label="मेन्यू खोलें" aria-expanded="false">☰</button></div>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <div class="container herogrid">
+                <div><span class="eyebrow">जनसेवा · पारदर्शिता · विकास</span>
+                    <h1>हमारे गांव का विकास,<br><span>हमारी सामूहिक जिम्मेदारी।</span></h1>
+                    <p><strong id="heroName">श्री राम प्रसाद</strong> — ग्राम पंचायत <strong
+                            id="heroVillage">आदर्शपुर</strong> के जनप्रतिनिधि। गांव की जरूरतों, विकास कार्यों और
+                        जनसंपर्क की जानकारी एक ही जगह।</p>
+                    <div class="actions"><a class="btn light" href="#about">परिचय जानें →</a><a class="btn outline"
+                            href="#works">विकास कार्य देखें</a></div>
+                    <div class="meta"><span>📍 <b id="heroDistrict">जिला — अपना जिला</b></span><span>🏡 <b
+                                id="heroBlock">ब्लॉक — अपना ब्लॉक</b></span><span>🤝 जनसेवा के लिए समर्पित</span></div>
+                </div>
+                <div class="visual">
+                    <div class="frame"><img id="profilePhoto"
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85"
+                            alt="जनप्रतिनिधि का डेमो प्रोफाइल फोटो"></div>
+                    <div class="tag"><small>आपका जनप्रतिनिधि</small><strong id="portraitName">श्री राम प्रसाद</strong>
+                    </div>
+                    <div class="stamp">जनसेवा<br>सर्वोपरि</div>
+                </div>
+            </div>
+        </section>
+        <div class="strip">
+            <div class="container">
+                <div class="stats">
+                    <div class="stat"><strong>08</strong><span>दर्ज विकास पहल</span></div>
+                    <div class="stat"><strong>04</strong><span>प्राथमिकता क्षेत्र</span></div>
+                    <div class="stat"><strong>12</strong><span>जनसंवाद गतिविधियां</span></div>
+                    <div class="stat"><strong>01</strong><span>हमारा साझा गांव</span></div>
+                </div>
+            </div>
+        </div>
+        <section class="section" id="about">
+            <div class="container intro">
+                <div class="introimg"><img
+                        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
+                        alt="गांव और हरियाली का दृश्य">
+                    <div class="note">“गांव की तरक्की में हर नागरिक की भागीदारी जरूरी है।”</div>
+                </div>
+                <div class="introcopy"><span class="eyebrow">हमारे प्रतिनिधि</span>
+                    <h2>आपकी आवाज़, आपके गांव की प्राथमिकताएं।</h2>
+                    <p><strong id="aboutName">श्री राम प्रसाद</strong> ग्राम पंचायत <strong
+                            id="aboutVillage">आदर्शपुर</strong> के विकास और जनसंपर्क से जुड़ी जानकारी साझा करने के लिए
+                        यह डिजिटल मंच प्रस्तुत है। यहां गांव के काम, प्रस्तावित योजनाएं और सार्वजनिक गतिविधियों का विवरण
+                        देखा जा सकता है।</p>
+                    <p>हमारा उद्देश्य है कि जानकारी आसानी से उपलब्ध हो और गांव के नागरिक अपने सुझाव व समस्याएं जिम्मेदार
+                        प्रतिनिधि तक पहुंचा सकें।</p>
+                    <div class="checks">
+                        <div class="check"><i>✓</i> जनसुनवाई और संवाद</div>
+                        <div class="check"><i>✓</i> विकास कार्यों की जानकारी</div>
+                        <div class="check"><i>✓</i> पारदर्शी अपडेट</div>
+                        <div class="check"><i>✓</i> नागरिकों की भागीदारी</div>
+                    </div><a class="btn primary" href="#contact">अपना सुझाव भेजें →</a>
+                </div>
+            </div>
+        </section>
+        <section class="section soft" id="works">
+            <div class="container">
+                <div class="head">
+                    <div><span class="eyebrow">जमीन से जुड़ा काम</span>
+                        <h2>गांव के विकास कार्य</h2>
+                    </div>
+                    <p>विकास परियोजनाओं की स्थिति, स्थान और जरूरी जानकारी यहां साझा की जाएगी। नीचे दिए गए कार्ड डेमो
+                        उदाहरण हैं।</p>
+                </div>
+                <div class="filters"><button class="filter active" data-filter="all">सभी कार्य</button><button
+                        class="filter" data-filter="completed">पूर्ण</button><button class="filter"
+                        data-filter="ongoing">प्रगति पर</button><button class="filter"
+                        data-filter="proposed">प्रस्तावित</button></div>
+                <div class="projects" id="projectGrid">
+                    <article class="card" data-status="completed">
+                        <div class="projectimg"><img loading="lazy"
+                                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+                                alt="ग्रामीण क्षेत्र"><span class="status">डेमो · पूर्ण</span></div>
+                        <div class="cardbody"><span class="type">सड़क एवं आवागमन</span>
+                            <h3>मुख्य मार्ग सुधार कार्य</h3>
+                            <p>गांव के मुख्य मार्ग को बेहतर बनाने से जुड़ा उदाहरण प्रोजेक्ट।</p>
+                            <div class="foot"><span>📍 मुख्य गांव मार्ग</span><a href="#contact">विवरण ↗</a></div>
+                        </div>
+                    </article>
+                    <article class="card" data-status="ongoing">
+                        <div class="projectimg"><img loading="lazy"
+                                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80"
+                                alt="निर्माण कार्य"><span class="status ongoing">डेमो · प्रगति पर</span></div>
+                        <div class="cardbody"><span class="type">सामुदायिक सुविधा</span>
+                            <h3>सार्वजनिक सुविधा केंद्र</h3>
+                            <p>स्थानीय नागरिकों के उपयोग हेतु सुविधा विकसित करने का उदाहरण।</p>
+                            <div class="foot"><span>📍 पंचायत क्षेत्र</span><a href="#contact">विवरण ↗</a></div>
+                        </div>
+                    </article>
+                    <article class="card" data-status="proposed">
+                        <div class="projectimg"><img loading="lazy"
+                                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                                alt="डिजिटल सुविधा"><span class="status proposed">डेमो · प्रस्तावित</span></div>
+                        <div class="cardbody"><span class="type">डिजिटल सुविधा</span>
+                            <h3>डिजिटल जनसुविधा पहल</h3>
+                            <p>नागरिकों तक जरूरी जानकारी ऑनलाइन पहुंचाने की प्रस्तावित पहल।</p>
+                            <div class="foot"><span>📍 ग्राम पंचायत</span><a href="#contact">विवरण ↗</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="vision">
+            <div class="container">
+                <div class="head">
+                    <div><span class="eyebrow">आने वाले समय की प्राथमिकताएं</span>
+                        <h2>हमारा गांव, हमारा विज़न</h2>
+                    </div>
+                    <p>गांव की जरूरतों और नागरिकों के सुझावों के आधार पर विकास की प्राथमिकताएं तय की जा सकती हैं।</p>
+                </div>
+                <div class="visions">
+                    <div class="vision">
+                        <div class="vicon">🛣️</div>
+                        <h3>बेहतर सड़कें</h3>
+                        <p>सुरक्षित आवागमन और रास्तों की बेहतर व्यवस्था।</p>
+                    </div>
+                    <div class="vision">
+                        <div class="vicon">💧</div>
+                        <h3>स्वच्छ पेयजल</h3>
+                        <p>स्वच्छ पानी और जल-सुविधाओं पर ध्यान।</p>
+                    </div>
+                    <div class="vision">
+                        <div class="vicon">🧹</div>
+                        <h3>स्वच्छ गांव</h3>
+                        <p>सफाई, कचरा प्रबंधन और जल निकासी।</p>
+                    </div>
+                    <div class="vision">
+                        <div class="vicon">💡</div>
+                        <h3>रोशनी की व्यवस्था</h3>
+                        <p>जरूरी सार्वजनिक स्थानों पर प्रकाश सुविधा।</p>
+                    </div>
+                    <div class="vision">
+                        <div class="vicon">📚</div>
+                        <h3>शिक्षा</h3>
+                        <p>विद्यालयों और सीखने के माहौल को बेहतर बनाना।</p>
+                    </div>
+                    <div class="vision">
+                        <div class="vicon">🩺</div>
+                        <h3>स्वास्थ्य</h3>
+                        <p>स्वास्थ्य सेवाओं की जानकारी और पहुंच।</p>
+                    </div>
+                    <div class="vision">
+                        <div class="vicon">🌳</div>
+                        <h3>हरित पंचायत</h3>
+                        <p>पेड़-पौधे, पर्यावरण और सार्वजनिक स्थान।</p>
+                    </div>
+                    <div class="vision">
+                        <div class="vicon">🤝</div>
+                        <h3>जनभागीदारी</h3>
+                        <p>बैठक, सुझाव और सामूहिक निर्णय प्रक्रिया।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section soft" id="gallery">
+            <div class="container">
+                <div class="head">
+                    <div><span class="eyebrow">तस्वीरों में गांव</span>
+                        <h2>फोटो गैलरी</h2>
+                    </div>
+                    <p>ग्राम सभा, जनसंवाद, कार्यक्रम और विकास कार्यों की वास्तविक तस्वीरें यहां जोड़ी जा सकती हैं।</p>
+                </div>
+                <div class="gallery"><button
+                        data-image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1500&q=90"><img
+                            loading="lazy"
+                            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+                            alt="गांव का दृश्य"><span>गांव और आसपास</span></button><button
+                        data-image="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1500&q=90"><img
+                            loading="lazy"
+                            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=700&q=80"
+                            alt="निर्माण गतिविधि"><span>विकास गतिविधि</span></button><button
+                        data-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1500&q=90"><img
+                            loading="lazy"
+                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
+                            alt="डिजिटल सेवा"><span>डिजिटल पहल</span></button><button
+                        data-image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=90"><img
+                            loading="lazy"
+                            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=80"
+                            alt="बैठक स्थल"><span>बैठक एवं संवाद</span></button><button
+                        data-image="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1500&q=90"><img
+                            loading="lazy"
+                            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=700&q=80"
+                            alt="हरित परिवेश"><span>हरित परिवेश</span></button></div>
+            </div>
+        </section>
+        <section class="section" id="updates">
+            <div class="container">
+                <div class="head">
+                    <div><span class="eyebrow">ताजा जानकारी</span>
+                        <h2>सूचनाएं और अपडेट</h2>
+                    </div>
+                    <p>जनसभा, सार्वजनिक सूचना, बैठक और विकास कार्यों से जुड़े अपडेट यहां प्रकाशित किए जा सकते हैं।</p>
+                </div>
+                <div class="updates">
+                    <article class="feature"><img loading="lazy"
+                            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1100&q=85"
+                            alt="समुदाय की बैठक">
+                        <div class="updatebody"><span class="date">डेमो अपडेट · 05 नवंबर 2026</span>
+                            <h3>ग्राम सभा और नागरिक सुझाव बैठक</h3>
+                            <p>गांव की प्राथमिक जरूरतों, सुविधाओं और प्रस्तावित कार्यों पर चर्चा के लिए बैठक की सूचना।
+                                वास्तविक तारीख और विवरण व्यवस्थापक द्वारा अपडेट करें।</p>
+                        </div>
+                    </article>
+                    <div class="updatelist">
+                        <article class="mini">
+                            <div class="datebox"><strong>08</strong><span>नवंबर</span></div>
+                            <div>
+                                <h4>सफाई एवं स्वच्छता जागरूकता</h4>
+                                <p>डेमो सूचना · समय और स्थान अपडेट करें।</p>
+                            </div>
+                        </article>
+                        <article class="mini">
+                            <div class="datebox"><strong>12</strong><span>नवंबर</span></div>
+                            <div>
+                                <h4>जनसुनवाई दिवस</h4>
+                                <p>डेमो सूचना · वास्तविक कार्यक्रम की पुष्टि करें।</p>
+                            </div>
+                        </article>
+                        <article class="mini">
+                            <div class="datebox"><strong>18</strong><span>नवंबर</span></div>
+                            <div>
+                                <h4>विकास प्राथमिकताओं पर चर्चा</h4>
+                                <p>डेमो सूचना · विवरण अपडेट करें।</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section contact" id="contact">
+            <div class="container contactgrid">
+                <div class="contactcopy"><span class="eyebrow">हमसे जुड़ें</span>
+                    <h2>आपका सुझाव, गांव के विकास में एक कदम।</h2>
+                    <p>किसी समस्या, सुझाव या जानकारी के लिए संपर्क करें। कृपया सही संपर्क विवरण वेबसाइट प्रकाशित करने से
+                        पहले अपडेट करें।</p>
+                    <div class="detail"><span class="symbol">📞</span>
+                        <div><small>फोन नंबर</small><strong id="phoneDisplay">+91 98765 43210 (डेमो)</strong></div>
+                    </div>
+                    <div class="detail"><span class="symbol">✉️</span>
+                        <div><small>ईमेल</small><strong id="emailDisplay">sampark@example.com</strong></div>
+                    </div>
+                    <div class="detail"><span class="symbol">📍</span>
+                        <div><small>पता</small><strong id="addressDisplay">ग्राम पंचायत आदर्शपुर, अपना जिला,
+                                भारत</strong></div>
+                    </div>
+                    <div class="mapbox"><strong>📌 पंचायत कार्यालय / लोकेशन</strong><span>यहां सही Google Maps लिंक और
+                            कार्यालय का पता जोड़ें।</span><br><a id="mapLink" class="btn light small"
+                            href="https://www.google.com/maps" target="_blank" rel="noopener"
+                            style="margin-top:12px">मैप पर देखें ↗</a></div>
+                </div>
+                <form class="form" id="contactForm">
+                    <h3>अपना संदेश भेजें</h3>
+                    <p>फॉर्म भरें — संदेश WhatsApp पर तैयार होगा।</p>
+                    <div class="formgrid">
+                        <div class="field"><label for="name">आपका नाम *</label><input id="name" required
+                                placeholder="अपना नाम लिखें"></div>
+                        <div class="field"><label for="mobile">मोबाइल नंबर *</label><input id="mobile" required
+                                inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10 अंकों का नंबर">
+                        </div>
+                        <div class="field"><label for="village">गांव / वार्ड</label><input id="village"
+                                placeholder="गांव या वार्ड"></div>
+                        <div class="field"><label for="subject">विषय</label><select id="subject">
+                                <option>सुझाव</option>
+                                <option>समस्या / शिकायत</option>
+                                <option>विकास कार्य</option>
+                                <option>अन्य जानकारी</option>
+                            </select></div>
+                        <div class="field full"><label for="message">आपका संदेश *</label><textarea id="message" required
+                                placeholder="अपनी बात यहां लिखें..."></textarea></div>
+                        <div class="field full"><button class="btn primary" type="submit">WhatsApp पर संदेश भेजें
+                                ↗</button></div>
+                    </div>
+                    <div class="hint">डेमो वेबसाइट: संदेश भेजने से पहले CONFIG में अपना सही WhatsApp नंबर डालें।</div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footerinner"><a class="brand" href="#home"><span class="mark">🌱</span><span><span
+                            class="brandname">ग्रामसेतु</span><span class="sub">ग्राम पंचायत ·
+                            जनसंपर्क</span></span></a>
+                <div class="footerlinks"><a href="#about">परिचय</a><a href="#works">विकास कार्य</a><a
+                        href="#gallery">गैलरी</a><a href="#contact">संपर्क</a><a href="#" id="shareBtn">वेबसाइट शेयर
+                        करें</a></div>
+            </div>
+            <p class="disclaimer">अस्वीकरण: यह एक डेमो / जनसंपर्क वेबसाइट टेम्पलेट है, किसी सरकारी विभाग या सरकारी
+                पोर्टल की आधिकारिक वेबसाइट नहीं। यहां दिखाए गए नाम, फोटो, आंकड़े, परियोजनाएं और सूचनाएं उदाहरण के लिए
+                हैं। प्रकाशित करने से पहले सभी जानकारी की पुष्टि करें और आवश्यक अनुमति प्राप्त करें।</p>
+            <p class="disclaimer">© <span id="year"></span> ग्रामसेतु · सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+    <div class="mobilebar"><a id="callAction" href="tel:+919876543210">☎ कॉल</a><a id="whatsAction"
+            href="https://wa.me/919876543210" target="_blank" rel="noopener">◉ WhatsApp</a><a href="#contact">✉
+            संदेश</a></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="फोटो देखें"><button
+            id="lightboxClose" aria-label="बंद करें">×</button><img id="lightboxImage" src="" alt="गैलरी फोटो"></div>
+    <script>
+        /* EDIT THIS CONFIG BEFORE USING FOR A REAL MUKHIYA. Replace demo content with verified details. WhatsApp: country code + number, digits only (example 919876543210). */
+        const CONFIG = { siteName: "ग्रामसेतु", mukhiyaName: "श्री राम प्रसाद", village: "आदर्शपुर", block: "अपना ब्लॉक", district: "अपना जिला", state: "उत्तर प्रदेश", phoneDisplay: "+91 98765 43210 (डेमो)", phoneLink: "+919876543210", whatsapp: "919876543210", email: "sampark@example.com", address: "ग्राम पंचायत आदर्शपुर, अपना जिला, उत्तर प्रदेश", mapUrl: "https://www.google.com/maps", profilePhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85" };
+        document.title = `${CONFIG.siteName} | ${CONFIG.mukhiyaName}`; const set = (id, v) => document.getElementById(id).textContent = v; set("brandName", CONFIG.siteName);["heroName", "portraitName", "aboutName"].forEach(id => set(id, CONFIG.mukhiyaName));["heroVillage", "aboutVillage"].forEach(id => set(id, CONFIG.village)); set("heroDistrict", `जिला — ${CONFIG.district}`); set("heroBlock", `ब्लॉक — ${CONFIG.block}`); set("locationLine", `ग्राम पंचायत ${CONFIG.village} · जिला ${CONFIG.district}`); set("phoneDisplay", CONFIG.phoneDisplay); set("emailDisplay", CONFIG.email); set("addressDisplay", CONFIG.address); document.getElementById("profilePhoto").src = CONFIG.profilePhoto; document.getElementById("mapLink").href = CONFIG.mapUrl; document.getElementById("callAction").href = `tel:${CONFIG.phoneLink}`; document.getElementById("whatsAction").href = `https://wa.me/${CONFIG.whatsapp}`; set("year", new Date().getFullYear());
+        const menu = document.getElementById("navLinks"), toggle = document.getElementById("menuToggle"); toggle.addEventListener("click", () => { let open = menu.classList.toggle("open"); toggle.setAttribute("aria-expanded", String(open)); toggle.textContent = open ? "×" : "☰" }); menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); toggle.textContent = "☰" }));
+        document.querySelectorAll(".filter").forEach(b => b.addEventListener("click", () => { document.querySelectorAll(".filter").forEach(x => x.classList.remove("active")); b.classList.add("active"); document.querySelectorAll(".card").forEach(c => c.hidden = b.dataset.filter !== "all" && c.dataset.status !== b.dataset.filter) }));
+        const box = document.getElementById("lightbox"), boximg = document.getElementById("lightboxImage"); document.querySelectorAll(".gallery button").forEach(b => b.addEventListener("click", () => { boximg.src = b.dataset.image; box.classList.add("open"); document.getElementById("lightboxClose").focus() })); function closeBox() { box.classList.remove("open"); boximg.src = "" } document.getElementById("lightboxClose").addEventListener("click", closeBox); box.addEventListener("click", e => { if (e.target === box) closeBox() }); document.addEventListener("keydown", e => { if (e.key === "Escape") closeBox() });
+        function toast(msg) { let t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 2800) } document.getElementById("contactForm").addEventListener("submit", e => { e.preventDefault(); let f = e.currentTarget; if (!f.reportValidity()) return; let m = document.getElementById("mobile").value.trim(); if (!/^[0-9]{10}$/.test(m)) { toast("कृपया 10 अंकों का सही मोबाइल नंबर लिखें।"); return } let msg = ["नमस्ते, वेबसाइट से एक नया संदेश मिला है।", `नाम: ${document.getElementById("name").value.trim()}`, `मोबाइल: ${m}`, `गांव / वार्ड: ${document.getElementById("village").value.trim() || "नहीं बताया"}`, `विषय: ${document.getElementById("subject").value}`, `संदेश: ${document.getElementById("message").value.trim()}`].join("\n"); window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank", "noopener") }); document.getElementById("shareBtn").addEventListener("click", async e => { e.preventDefault(); let d = { title: document.title, text: `${CONFIG.mukhiyaName} · ग्राम पंचायत ${CONFIG.village}`, url: location.href }; try { if (navigator.share) await navigator.share(d); else if (navigator.clipboard) { await navigator.clipboard.writeText(location.href); toast("वेबसाइट लिंक कॉपी हो गया।") } else toast("ब्राउज़र में शेयर विकल्प उपलब्ध नहीं है।") } catch (err) { } });
+    </script>
+</body>
+
+</html>
