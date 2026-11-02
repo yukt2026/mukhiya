@@ -1,1828 +1,2930 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#123d2d">
-    <meta name="description" content="ग्राम पंचायत की जानकारी, जनप्रतिनिधि परिचय, विकास कार्य और जनसंपर्क।">
-    <title>ग्रामसेतु | ग्राम पंचायत जनसंपर्क</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
-
-        :root {
-            --g: #174b36;
-            --g2: #216447;
-            --deep: #102a20;
-            --cream: #f7f8f3;
-            --ink: #17221c;
-            --muted: #65736a;
-            --gold: #d8a84e;
-            --line: #e6ebe5;
-            --shadow: 0 18px 50px #13372718;
-            --r: 22px;
-            --max: 1180px
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 88px
-        }
-
-        body {
-            margin: 0;
-            background: var(--cream);
-            color: var(--ink);
-            font-family: "Noto Sans Devanagari", "DM Sans", sans-serif;
-            line-height: 1.65
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none
-        }
-
-        button,
-        input,
-        textarea,
-        select {
-            font: inherit
-        }
-
-        button {
-            cursor: pointer
-        }
-
-        img {
-            display: block;
-            max-width: 100%
-        }
-
-        .container {
-            width: min(var(--max), calc(100% - 44px));
-            margin: auto
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            font-size: .78rem;
-            font-weight: 800;
-            color: var(--g2)
-        }
-
-        .eyebrow:before {
-            content: "";
-            height: 2px;
-            width: 24px;
-            background: var(--gold)
-        }
-
-        .section {
-            padding: 82px 0
-        }
-
-        .head {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            gap: 24px;
-            margin-bottom: 30px
-        }
-
-        .head h2 {
-            font-size: clamp(1.8rem, 4vw, 2.65rem);
-            line-height: 1.25;
-            margin: 10px 0 0;
-            letter-spacing: -.04em
-        }
-
-        .head p {
-            max-width: 470px;
-            color: var(--muted);
-            margin: 0
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            border: 1px solid transparent;
-            border-radius: 999px;
-            padding: 13px 21px;
-            font-weight: 800;
-            font-size: .92rem;
-            min-height: 48px;
-            transition: .2s
-        }
-
-        .primary {
-            background: var(--g);
-            color: white;
-            box-shadow: 0 8px 20px #174b362e
-        }
-
-        .primary:hover {
-            background: #0e3827;
-            transform: translateY(-2px)
-        }
-
-        .light {
-            background: #fff;
-            color: var(--g);
-            border-color: #dce7de
-        }
-
-        .small {
-            padding: 9px 15px;
-            min-height: 40px;
-            font-size: .84rem
-        }
-
-        .topline {
-            background: var(--deep);
-            color: #e8f0e9;
-            font-size: .78rem;
-            padding: 8px 0
-        }
-
-        .topline .container {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px
-        }
-
-        .topline strong {
-            color: #f2cf86
-        }
-
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: #ffffffef;
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid #e1e9e1
-        }
-
-        .nav {
-            height: 78px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            min-width: max-content
-        }
-
-        .mark {
-            width: 43px;
-            height: 43px;
-            border-radius: 14px;
-            background: var(--g);
-            color: white;
-            display: grid;
-            place-items: center;
-            font-size: 1.35rem
-        }
-
-        .brandname {
-            font-size: 1.08rem;
-            font-weight: 900;
-            line-height: 1.1;
-            color: var(--deep)
-        }
-
-        .sub {
-            font: 600 .64rem "DM Sans", sans-serif;
-            color: #7b887f;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            margin-top: 4px
-        }
-
-        .links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            color: #4f5e54;
-            font-size: .86rem;
-            font-weight: 700
-        }
-
-        .links a:hover {
-            color: var(--g)
-        }
-
-        .navright {
-            display: flex;
-            align-items: center;
-            gap: 10px
-        }
-
-        .hamb {
-            display: none;
-            width: 44px;
-            height: 44px;
-            border: 1px solid var(--line);
-            background: white;
-            border-radius: 13px;
-            color: var(--g);
-            font-size: 1.3rem
-        }
-
-        .hero {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(118deg, #123d2d, #1c6041 62%, #2b7450);
-            color: white;
-            padding: 58px 0 76px
-        }
-
-        .hero:before {
-            content: "";
-            position: absolute;
-            width: 580px;
-            height: 580px;
-            border: 1px solid #ffffff1c;
-            border-radius: 50%;
-            right: -180px;
-            top: -280px;
-            box-shadow: 0 0 0 45px #ffffff08, 0 0 0 95px #ffffff05
-        }
-
-        .herogrid {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1.12fr .88fr;
-            align-items: center;
-            gap: 54px
-        }
-
-        .hero .eyebrow {
-            color: #f0cc85
-        }
-
-        .hero h1 {
-            font-size: clamp(2.25rem, 5.1vw, 4.3rem);
-            line-height: 1.19;
-            letter-spacing: -.055em;
-            margin: 18px 0 17px;
-            max-width: 680px
-        }
-
-        .hero h1 span {
-            color: #f1cc82
-        }
-
-        .hero p {
-            color: #ffffffc7;
-            font-size: 1rem;
-            max-width: 590px;
-            margin: 0 0 27px
-        }
-
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px
-        }
-
-        .hero .outline {
-            border-color: #ffffff70;
-            color: white
-        }
-
-        .meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-top: 28px;
-            color: #d9e8dc;
-            font-size: .83rem
-        }
-
-        .visual {
-            position: relative;
-            max-width: 430px;
-            width: 100%;
-            margin-left: auto
-        }
-
-        .frame {
-            padding: 11px;
-            border: 1px solid #ffffff45;
-            border-radius: 30px;
-            background: #ffffff1a;
-            transform: rotate(1.5deg)
-        }
-
-        .frame img {
-            width: 100%;
-            height: 440px;
-            object-fit: cover;
-            border-radius: 22px
-        }
-
-        .tag {
-            position: absolute;
-            left: -36px;
-            bottom: 28px;
-            background: white;
-            color: var(--deep);
-            padding: 15px 18px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            transform: rotate(-2deg)
-        }
-
-        .tag small {
-            display: block;
-            color: var(--muted);
-            font-size: .68rem
-        }
-
-        .tag strong {
-            font-size: .95rem
-        }
-
-        .stamp {
-            position: absolute;
-            right: -18px;
-            top: 25px;
-            border-radius: 50%;
-            width: 86px;
-            height: 86px;
-            background: var(--gold);
-            color: var(--deep);
-            display: grid;
-            place-items: center;
-            text-align: center;
-            font-size: .65rem;
-            line-height: 1.25;
-            font-weight: 900;
-            border: 5px solid #ffffff55
-        }
-
-        .strip {
-            position: relative;
-            margin-top: -34px;
-            z-index: 2
-        }
-
-        .stats {
-            background: white;
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            padding: 22px 10px
-        }
-
-        .stat {
-            text-align: center;
-            padding: 4px 20px;
-            border-right: 1px solid var(--line)
-        }
-
-        .stat:last-child {
-            border: 0
-        }
-
-        .stat strong {
-            display: block;
-            color: var(--g);
-            font: 800 1.8rem "DM Sans", sans-serif
-        }
-
-        .stat span {
-            font-size: .79rem;
-            color: var(--muted);
-            font-weight: 700
-        }
-
-        .intro {
-            display: grid;
-            grid-template-columns: .9fr 1.1fr;
-            gap: 52px;
-            align-items: center
-        }
-
-        .introimg {
-            position: relative
-        }
-
-        .introimg img {
-            width: 100%;
-            height: 430px;
-            object-fit: cover;
-            border-radius: var(--r)
-        }
-
-        .note {
-            position: absolute;
-            right: -18px;
-            bottom: 22px;
-            background: white;
-            padding: 16px 19px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            max-width: 220px;
-            font-weight: 800;
-            color: var(--g);
-            font-size: .85rem
-        }
-
-        .introcopy h2 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            line-height: 1.28;
-            margin: 11px 0 16px
-        }
-
-        .introcopy p {
-            color: var(--muted);
-            margin: 0 0 15px
-        }
-
-        .checks {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin: 24px 0
-        }
-
-        .check {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-size: .88rem;
-            font-weight: 700
-        }
-
-        .check i {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background: #e5f1e8;
-            color: var(--g);
-            display: grid;
-            place-items: center;
-            font-style: normal
-        }
-
-        .soft {
-            background: #eef3ed
-        }
-
-        .filters {
-            display: flex;
-            gap: 9px;
-            flex-wrap: wrap;
-            margin-bottom: 25px
-        }
-
-        .filter {
-            border: 1px solid #dbe5db;
-            background: white;
-            color: #607067;
-            padding: 9px 15px;
-            border-radius: 999px;
-            font-size: .81rem;
-            font-weight: 800
-        }
-
-        .filter.active,
-        .filter:hover {
-            background: var(--g);
-            color: white;
-            border-color: var(--g)
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px
-        }
-
-        .card {
-            background: white;
-            border: 1px solid var(--line);
-            border-radius: 19px;
-            overflow: hidden;
-            transition: .25s
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow)
-        }
-
-        .projectimg {
-            height: 205px;
-            position: relative;
-            overflow: hidden
-        }
-
-        .projectimg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: .5s
-        }
-
-        .card:hover .projectimg img {
-            transform: scale(1.05)
-        }
-
-        .status {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-            background: white;
-            border-radius: 999px;
-            padding: 6px 11px;
-            font-size: .7rem;
-            font-weight: 900;
-            color: var(--g)
-        }
-
-        .status.ongoing {
-            color: #925f12;
-            background: #fff4dc
-        }
-
-        .status.proposed {
-            color: #596679;
-            background: #eef1f6
-        }
-
-        .cardbody {
-            padding: 18px
-        }
-
-        .type {
-            font-size: .72rem;
-            color: var(--g2);
-            font-weight: 900
-        }
-
-        .card h3 {
-            font-size: 1.1rem;
-            margin: 6px 0 7px;
-            line-height: 1.4
-        }
-
-        .card p {
-            font-size: .82rem;
-            color: var(--muted);
-            margin: 0 0 14px
-        }
-
-        .foot {
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid var(--line);
-            padding-top: 13px;
-            font-size: .76rem;
-            color: #728076
-        }
-
-        .foot a {
-            color: var(--g);
-            font-weight: 900
-        }
-
-        .visions {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px
-        }
-
-        .vision {
-            background: white;
-            border: 1px solid var(--line);
-            padding: 23px 19px;
-            border-radius: 18px;
-            min-height: 175px;
-            transition: .2s
-        }
-
-        .vision:hover {
-            border-color: #b4cbb8;
-            transform: translateY(-4px)
-        }
-
-        .vicon {
-            width: 45px;
-            height: 45px;
-            display: grid;
-            place-items: center;
-            background: #eaf3ed;
-            border-radius: 14px;
-            font-size: 1.35rem;
-            margin-bottom: 14px
-        }
-
-        .vision h3 {
-            font-size: 1rem;
-            margin: 0 0 6px
-        }
-
-        .vision p {
-            font-size: .78rem;
-            color: var(--muted);
-            margin: 0
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: 1.25fr .9fr .9fr;
-            grid-template-rows: 190px 190px;
-            gap: 14px
-        }
-
-        .gallery button {
-            border: 0;
-            padding: 0;
-            overflow: hidden;
-            border-radius: 18px;
-            position: relative;
-            background: #dfe8df
-        }
-
-        .gallery button:first-child {
-            grid-row: span 2
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: .4s
-        }
-
-        .gallery button:hover img {
-            transform: scale(1.05)
-        }
-
-        .gallery button:after {
-            content: "";
-            position: absolute;
-            inset: 45% 0 0;
-            background: linear-gradient(transparent, #0009)
-        }
-
-        .gallery span {
-            position: absolute;
-            z-index: 1;
-            bottom: 13px;
-            left: 15px;
-            color: white;
-            font-weight: 800;
-            font-size: .85rem
-        }
-
-        .updates {
-            display: grid;
-            grid-template-columns: 1.15fr .85fr;
-            gap: 20px
-        }
-
-        .feature {
-            background: white;
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            overflow: hidden
-        }
-
-        .feature img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover
-        }
-
-        .updatebody {
-            padding: 22px
-        }
-
-        .date {
-            font-size: .74rem;
-            color: var(--g2);
-            font-weight: 900
-        }
-
-        .updatebody h3 {
-            font-size: 1.3rem;
-            margin: 7px 0;
-            line-height: 1.35
-        }
-
-        .updatebody p {
-            font-size: .86rem;
-            color: var(--muted);
-            margin: 0
-        }
-
-        .updatelist {
-            display: grid;
-            gap: 12px
-        }
-
-        .mini {
-            display: flex;
-            gap: 15px;
-            background: white;
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 16px
-        }
-
-        .datebox {
-            width: 56px;
-            min-width: 56px;
-            height: 62px;
-            border-radius: 12px;
-            background: #eaf3ed;
-            display: grid;
-            place-content: center;
-            text-align: center;
-            color: var(--g)
-        }
-
-        .datebox strong {
-            font: 800 1.3rem "DM Sans", sans-serif;
-            line-height: 1
-        }
-
-        .datebox span {
-            font-size: .64rem;
-            font-weight: 900
-        }
-
-        .mini h4 {
-            margin: 1px 0 4px;
-            font-size: .91rem;
-            line-height: 1.35
-        }
-
-        .mini p {
-            margin: 0;
-            color: var(--muted);
-            font-size: .76rem
-        }
-
-        .contact {
-            background: var(--deep);
-            color: white;
-            position: relative;
-            overflow: hidden
-        }
-
-        .contact .eyebrow {
-            color: #efc779
-        }
-
-        .contactgrid {
-            display: grid;
-            grid-template-columns: .85fr 1.15fr;
-            gap: 45px;
-            position: relative;
-            z-index: 1
-        }
-
-        .contactcopy h2 {
-            font-size: clamp(1.8rem, 4vw, 2.7rem);
-            line-height: 1.25;
-            margin: 12px 0
-        }
-
-        .contactcopy>p {
-            color: #b8c9bd
-        }
-
-        .detail {
-            display: flex;
-            gap: 13px;
-            align-items: center;
-            margin: 23px 0
-        }
-
-        .symbol {
-            width: 43px;
-            height: 43px;
-            border-radius: 14px;
-            background: #ffffff1c;
-            display: grid;
-            place-items: center;
-            font-size: 1.1rem
-        }
-
-        .detail small {
-            display: block;
-            color: #adc0b3;
-            font-size: .7rem
-        }
-
-        .detail strong {
-            font-size: .9rem
-        }
-
-        .mapbox {
-            margin-top: 25px;
-            border: 1px solid #ffffff2b;
-            border-radius: 16px;
-            padding: 17px;
-            background: #ffffff0f
-        }
-
-        .mapbox strong {
-            display: block;
-            margin-bottom: 3px
-        }
-
-        .mapbox span {
-            font-size: .78rem;
-            color: #b8c9bd
-        }
-
-        .form {
-            background: white;
-            color: var(--ink);
-            padding: 26px;
-            border-radius: 22px;
-            box-shadow: 0 20px 60px #0002
-        }
-
-        .form h3 {
-            margin: 0 0 4px;
-            font-size: 1.25rem
-        }
-
-        .form>p {
-            color: var(--muted);
-            font-size: .82rem;
-            margin: 0 0 18px
-        }
-
-        .formgrid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px
-        }
-
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 6px
-        }
-
-        .field.full {
-            grid-column: 1/-1
-        }
-
-        .field label {
-            font-size: .77rem;
-            font-weight: 800;
-            color: #46564b
-        }
-
-        .field input,
-        .field textarea,
-        .field select {
-            width: 100%;
-            border: 1px solid #dfe7df;
-            background: #fbfcfa;
-            border-radius: 11px;
-            padding: 12px 13px;
-            outline: none;
-            font-size: .87rem;
-            min-height: 46px
-        }
-
-        .field textarea {
-            min-height: 100px;
-            resize: vertical
-        }
-
-        .field input:focus,
-        .field textarea:focus,
-        .field select:focus {
-            border-color: #6c9c7c;
-            box-shadow: 0 0 0 3px #2164471a
-        }
-
-        .hint {
-            font-size: .7rem;
-            color: #7a887e;
-            margin-top: 10px
-        }
-
-        .footer {
-            background: #0b2118;
-            color: #b4c3b8;
-            padding: 30px 0 90px
-        }
-
-        .footerinner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px
-        }
-
-        .footer .brandname {
-            color: white
-        }
-
-        .footerlinks {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-            font-size: .78rem
-        }
-
-        .disclaimer {
-            font-size: .7rem;
-            color: #82948a;
-            margin-top: 20px;
-            max-width: 900px
-        }
-
-        .mobilebar {
-            display: none
-        }
-
-        .toast {
-            position: fixed;
-            left: 50%;
-            bottom: 95px;
-            transform: translate(-50%, 20px);
-            background: #142d20;
-            color: white;
-            padding: 12px 17px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            font-size: .82rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: .25s;
-            z-index: 100;
-            max-width: calc(100% - 30px);
-            text-align: center
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translate(-50%, 0)
-        }
-
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            background: #05120cee;
-            z-index: 200;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px
-        }
-
-        .lightbox.open {
-            display: flex
-        }
-
-        .lightbox img {
-            max-width: min(100%, 1000px);
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 12px
-        }
-
-        .lightbox button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            border: 0;
-            border-radius: 50%;
-            background: white;
-            color: #102a20;
-            font-size: 1.4rem
-        }
-
-        @media(max-width:980px) {
-            .links {
-                gap: 13px;
-                font-size: .8rem
-            }
-
-            .navright>.btn {
-                display: none
-            }
-
-            .herogrid {
-                gap: 30px
-            }
-
-            .frame img {
-                height: 390px
-            }
-
-            .projects {
-                grid-template-columns: repeat(2, 1fr)
-            }
-
-            .visions {
-                grid-template-columns: repeat(2, 1fr)
-            }
-        }
-
-        @media(max-width:720px) {
-            body {
-                font-size: 15px
-            }
-
-            .container {
-                width: min(100% - 32px, var(--max))
-            }
-
-            .topline {
-                font-size: .68rem
-            }
-
-            .topline .container span:last-child {
-                display: none
-            }
-
-            .nav {
-                height: 66px
-            }
-
-            .mark {
-                width: 39px;
-                height: 39px
-            }
-
-            .brandname {
-                font-size: .98rem
-            }
-
-            .hamb {
-                display: block
-            }
-
-            .links {
-                display: none;
-                position: absolute;
-                left: 16px;
-                right: 16px;
-                top: 70px;
-                background: white;
-                padding: 12px;
-                border: 1px solid var(--line);
-                border-radius: 17px;
-                box-shadow: var(--shadow);
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0
-            }
-
-            .links.open {
-                display: flex
-            }
-
-            .links a {
-                padding: 12px 13px;
-                border-radius: 10px
-            }
-
-            .links a:hover {
-                background: #eaf3ed
-            }
-
-            .hero {
-                padding: 35px 0 58px
-            }
-
-            .herogrid {
-                grid-template-columns: 1fr;
-                gap: 27px
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-                margin: 13px 0
-            }
-
-            .hero p {
-                font-size: .9rem;
-                line-height: 1.8
-            }
-
-            .actions .btn {
-                flex: 1;
-                padding: 12px 13px;
-                font-size: .83rem
-            }
-
-            .meta {
-                gap: 10px 15px;
-                font-size: .72rem;
-                margin-top: 18px
-            }
-
-            .visual {
-                max-width: 310px;
-                margin: 0 auto
-            }
-
-            .frame {
-                border-radius: 23px;
-                padding: 7px
-            }
-
-            .frame img {
-                height: 300px;
-                border-radius: 17px
-            }
-
-            .tag {
-                left: -12px;
-                bottom: 15px;
-                padding: 10px 13px
-            }
-
-            .tag strong {
-                font-size: .8rem
-            }
-
-            .tag small {
-                font-size: .59rem
-            }
-
-            .stamp {
-                right: -8px;
-                top: 14px;
-                width: 69px;
-                height: 69px;
-                font-size: .55rem;
-                border-width: 3px
-            }
-
-            .strip {
-                margin-top: -23px
-            }
-
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 9px 5px;
-                border-radius: 16px
-            }
-
-            .stat {
-                padding: 12px 5px;
-                border-right: 1px solid var(--line);
-                border-bottom: 1px solid var(--line)
-            }
-
-            .stat:nth-child(2) {
-                border-right: 0
-            }
-
-            .stat:nth-child(3),
-            .stat:nth-child(4) {
-                border-bottom: 0
-            }
-
-            .stat strong {
-                font-size: 1.45rem
-            }
-
-            .stat span {
-                font-size: .68rem
-            }
-
-            .section {
-                padding: 58px 0
-            }
-
-            .head {
-                display: block;
-                margin-bottom: 23px
-            }
-
-            .head p {
-                font-size: .84rem;
-                margin-top: 10px
-            }
-
-            .head h2 {
-                font-size: 1.8rem
-            }
-
-            .intro {
-                grid-template-columns: 1fr;
-                gap: 27px
-            }
-
-            .introimg img {
-                height: 275px
-            }
-
-            .note {
-                right: 10px;
-                bottom: 12px;
-                max-width: 180px;
-                padding: 12px;
-                font-size: .76rem
-            }
-
-            .introcopy h2 {
-                font-size: 1.8rem
-            }
-
-            .introcopy p {
-                font-size: .87rem
-            }
-
-            .checks {
-                gap: 10px
-            }
-
-            .check {
-                font-size: .76rem
-            }
-
-            .filters {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding-bottom: 8px;
-                scrollbar-width: none
-            }
-
-            .filters::-webkit-scrollbar {
-                display: none
-            }
-
-            .filter {
-                white-space: nowrap;
-                flex: 0 0 auto
-            }
-
-            .projects {
-                grid-template-columns: 1fr;
-                gap: 15px
-            }
-
-            .projectimg {
-                height: 205px
-            }
-
-            .cardbody {
-                padding: 16px
-            }
-
-            .visions {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px
-            }
-
-            .vision {
-                padding: 16px 14px;
-                min-height: 160px
-            }
-
-            .vision h3 {
-                font-size: .87rem
-            }
-
-            .vision p {
-                font-size: .72rem
-            }
-
-            .vicon {
-                width: 39px;
-                height: 39px;
-                font-size: 1.15rem;
-                margin-bottom: 10px
-            }
-
-            .gallery {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 160px 130px 130px;
-                gap: 9px
-            }
-
-            .gallery button:first-child {
-                grid-row: span 2;
-                grid-column: span 2
-            }
-
-            .gallery span {
-                font-size: .74rem;
-                bottom: 9px;
-                left: 11px
-            }
-
-            .updates {
-                grid-template-columns: 1fr;
-                gap: 14px
-            }
-
-            .feature img {
-                height: 200px
-            }
-
-            .updatebody {
-                padding: 17px
-            }
-
-            .updatebody h3 {
-                font-size: 1.1rem
-            }
-
-            .mini {
-                padding: 12px;
-                gap: 11px
-            }
-
-            .datebox {
-                width: 48px;
-                min-width: 48px;
-                height: 56px
-            }
-
-            .contactgrid {
-                grid-template-columns: 1fr;
-                gap: 25px
-            }
-
-            .contactcopy h2 {
-                font-size: 1.85rem
-            }
-
-            .form {
-                padding: 19px;
-                border-radius: 17px
-            }
-
-            .formgrid {
-                grid-template-columns: 1fr;
-                gap: 11px
-            }
-
-            .field.full {
-                grid-column: auto
-            }
-
-            .footer {
-                padding-bottom: 105px
-            }
-
-            .footerinner {
-                display: block
-            }
-
-            .footerlinks {
-                margin-top: 17px;
-                gap: 12px
-            }
-
-            .mobilebar {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                z-index: 80;
-                background: #fffffff7;
-                backdrop-filter: blur(14px);
-                border-top: 1px solid var(--line);
-                padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
-                box-shadow: 0 -8px 25px #13372714
-            }
-
-            .mobilebar a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 6px;
-                color: var(--g);
-                font-size: .77rem;
-                font-weight: 900;
-                min-height: 43px
-            }
-
-            .mobilebar a:nth-child(2) {
-                background: #e8f4ec;
-                border-radius: 12px
-            }
-        }
-
-        @media(max-width:360px) {
-            .hero h1 {
-                font-size: 1.95rem
-            }
-
-            .checks {
-                grid-template-columns: 1fr
-            }
-
-            .actions {
-                display: grid;
-                grid-template-columns: 1fr 1fr
-            }
-        }
-
-        @media(prefers-reduced-motion:reduce) {
-            * {
-                scroll-behavior: auto !important;
-                transition: none !important
-            }
-        }
-
-        @media print {
-
-            .topline,
-            .header,
-            .mobilebar,
-            .actions,
-            .contact,
-            .footer,
-            .btn {
-                display: none !important
-            }
-
-            body {
-                background: white
-            }
-
-            .hero {
-                background: white;
-                color: #111;
-                padding: 20px 0
-            }
-
-            .hero p,
-            .meta {
-                color: #333
-            }
-
-            .hero h1 span {
-                color: var(--g)
-            }
-
-            .section {
-                padding: 25px 0
-            }
-
-            .container {
-                width: 100%
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#0c4a34">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="ग्राम पंचायत आदर्शपुर की आधिकारिक जन-सूचना ऐप व वेबसाइट। मुखिया श्री राम प्रसाद - विकास कार्य, सरकारी योजनाएं, ग्राम सभा और जनसंपर्क।">
+  <title>ग्राम पंचायत आदर्शपुर | श्री राम प्रसाद (मुखिया / ग्राम प्रधान)</title>
+
+  <!-- Google Fonts: Noto Sans Devanagari, Yatra One, DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Yatra+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --saffron: #e65100;
+      --saffron-bright: #ff6d00;
+      --saffron-light: #fff3e0;
+      --saffron-border: #fed7aa;
+      --green-dark: #083424;
+      --green: #0c4a34;
+      --green-medium: #15803d;
+      --green-light: #ecfdf5;
+      --green-border: #bbf7d0;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --bg-cream: #f8faf8;
+      --bg-surface: #ffffff;
+      --text-main: #14221d;
+      --text-muted: #52635d;
+      --line: #e2ebe5;
+      --line-subtle: #edf3ee;
+      --shadow-app: 0 4px 14px rgba(12, 74, 52, 0.08);
+      --shadow-card: 0 8px 24px rgba(12, 74, 52, 0.07);
+      --shadow-float: 0 16px 36px rgba(8, 52, 36, 0.16);
+      --radius-xs: 8px;
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --container-max: 1220px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; font-size: 16px; }
+    body {
+      background: var(--bg-cream);
+      color: var(--text-main);
+      font-family: "Noto Sans Devanagari", "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 74px; /* App Bottom Dock space on mobile */
+    }
+
+    @media (min-width: 821px) {
+      body { padding-bottom: 0; }
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; border: none; background: none; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .container {
+      width: min(var(--container-max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* Tricolor National Stripe Header */
+    .tricolor-stripe {
+      height: 4px;
+      background: linear-gradient(90deg, #ff9933 0%, #ff9933 33.3%, #ffffff 33.3%, #ffffff 66.6%, #138808 66.6%, #138808 100%);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Desktop Top Helpline Bar */
+    .top-bar {
+      background: #052016;
+      color: #d1fae5;
+      font-size: 0.8rem;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .top-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .top-bar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #15803d;
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+    .top-bar-helplines {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #cbd5e1;
+    }
+    .top-bar-helplines a {
+      color: #fde047;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .top-bar-helplines a:hover { color: #fff; }
+
+    /* Sticky App Navigation Header */
+    .main-header {
+      position: sticky;
+      top: 4px;
+      z-index: 90;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: all 0.25s ease;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+      gap: 14px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-emblem {
+      width: 46px;
+      height: 46px;
+      background: radial-gradient(circle, #e65100 0%, #0c4a34 100%);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 12px rgba(230, 81, 0, 0.25);
+      border: 2px solid #fff;
+      flex-shrink: 0;
+    }
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .brand-main {
+      font-family: 'Yatra One', 'Noto Sans Devanagari', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-sub .dot {
+      width: 4px;
+      height: 4px;
+      background: var(--saffron);
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #334155;
+      padding: 7px 10px;
+      border-radius: var(--radius-xs);
+      transition: all 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--green);
+      background: rgba(12, 74, 52, 0.06);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .btn:active {
+      transform: scale(0.97);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #093726 0%, #052016 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(12, 74, 52, 0.3);
+    }
+    .btn-saffron {
+      background: linear-gradient(135deg, #ff7a00 0%, #e65100 100%);
+      color: white;
+    }
+    .btn-saffron:hover {
+      background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(230, 81, 0, 0.3);
+    }
+    .btn-outline-white {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(6px);
+    }
+    .btn-outline-white:hover {
+      background: #ffffff;
+      color: var(--green-dark);
+    }
+    .btn-outline-green {
+      background: white;
+      color: var(--green);
+      border: 1.5px solid var(--green);
+    }
+    .btn-outline-green:hover {
+      background: var(--green);
+      color: white;
+    }
+    .btn-sm {
+      padding: 7px 14px;
+      font-size: 0.82rem;
+    }
+
+    .hamburger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-xs);
+      background: #f1f5f2;
+      border: 1px solid var(--line);
+      color: var(--green);
+      font-size: 1.3rem;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    /* Section Global Styles */
+    .section {
+      padding: 64px 0;
+      position: relative;
+    }
+    .section-light-green {
+      background: #f1f7f3;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--saffron);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      background: var(--saffron-light);
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--saffron-border);
+      margin-bottom: 12px;
+    }
+    .section-head h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--green-dark);
+      font-weight: 900;
+      line-height: 1.28;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+    }
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .jhalar-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+    .jhalar-line {
+      height: 2px;
+      width: 50px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .jhalar-line.right {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .jhalar-icon {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(6, 38, 26, 0.94) 0%, rgba(12, 74, 52, 0.88) 100%), url('images/village_hero.jpg') center center/cover no-repeat;
+      color: white;
+      padding: 48px 0 72px;
+      overflow: hidden;
+    }
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content {
+      max-width: 680px;
+    }
+    .hero-badge-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fef08a;
+      margin-bottom: 18px;
+      backdrop-filter: blur(6px);
+    }
+    .hero-content h1 {
+      font-size: clamp(1.85rem, 4.6vw, 3.4rem);
+      line-height: 1.22;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero-content h1 span.highlight {
+      color: #fde047;
+      text-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+    }
+    .hero-subtitle {
+      font-size: clamp(0.92rem, 2.2vw, 1.08rem);
+      line-height: 1.7;
+      color: #e2e8f0;
+      margin-bottom: 26px;
+      max-width: 580px;
+    }
+    .hero-subtitle strong { color: #fff; }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .hero-quick-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-meta-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.14);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .hero-meta-text {
+      font-size: 0.76rem;
+      line-height: 1.35;
+      color: #cbd5e1;
+    }
+    .hero-meta-text b {
+      display: block;
+      color: #fff;
+      font-size: 0.86rem;
+    }
+
+    /* Mukhiya Hero Card */
+    .mukhiya-card {
+      position: relative;
+      background: #ffffff;
+      color: var(--text-main);
+      padding: 12px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.32);
+      border: 3px solid rgba(255, 255, 255, 0.85);
+      transition: transform 0.3s ease;
+    }
+    .mukhiya-card:hover {
+      transform: translateY(-4px);
+    }
+    .mukhiya-photo-wrap {
+      position: relative;
+      border-radius: calc(var(--radius-lg) - 6px);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #e2e8f0;
+    }
+    .mukhiya-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .mukhiya-badge-float {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(8, 52, 36, 0.92);
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+    }
+    .mukhiya-card-info {
+      padding: 14px 10px 6px;
+      text-align: center;
+    }
+    .mukhiya-card-info h3 {
+      font-size: 1.35rem;
+      color: var(--green-dark);
+      font-weight: 900;
+      margin-bottom: 2px;
+    }
+    .mukhiya-card-info p {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--saffron);
+      margin-bottom: 12px;
+    }
+    .mukhiya-card-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .seal-stamp {
+      position: absolute;
+      right: -16px;
+      bottom: -16px;
+      width: 94px;
+      height: 94px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #451a03;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 0.68rem;
+      font-weight: 900;
+      line-height: 1.25;
+      padding: 6px;
+      border: 3px solid #fff;
+      box-shadow: 0 8px 20px rgba(217, 119, 6, 0.35);
+      transform: rotate(-8deg);
+      z-index: 5;
+    }
+
+    /* APP QUICK ACTION SHORTCUTS (Mobile Focused) */
+    .app-shortcuts-bar {
+      margin-top: -32px;
+      position: relative;
+      z-index: 15;
+    }
+    .shortcuts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .shortcut-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 16px 14px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .shortcut-card:hover, .shortcut-card:active {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-float);
+      border-color: var(--green);
+    }
+    .shortcut-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .shortcut-card:nth-child(1) .shortcut-icon-wrap { background: #e0f2fe; color: #0284c7; }
+    .shortcut-card:nth-child(2) .shortcut-icon-wrap { background: #fef3c7; color: #d97706; }
+    .shortcut-card:nth-child(3) .shortcut-icon-wrap { background: #dcfce7; color: #16a34a; }
+    .shortcut-card:nth-child(4) .shortcut-icon-wrap { background: #ffedd5; color: #ea580c; }
+    .shortcut-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      line-height: 1.25;
+    }
+    .shortcut-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* VILLAGE STATS STRIP */
+    .stats-section-wrap {
+      margin-top: 28px;
+    }
+    .stats-card-container {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-app);
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 22px 14px;
+      gap: 10px;
+    }
+    .stat-box {
+      text-align: center;
+      padding: 6px 10px;
+      border-right: 1px solid var(--line);
+    }
+    .stat-box:last-child {
+      border-right: none;
+    }
+    .stat-box-icon {
+      font-size: 1.45rem;
+      margin-bottom: 4px;
+    }
+    .stat-box-num {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--green-dark);
+      line-height: 1.1;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .stat-box-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    /* ABOUT / MUKHIYA DESK SECTION */
+    .desk-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .desk-image-col {
+      position: relative;
+    }
+    .desk-main-img {
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      border: 4px solid #fff;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .desk-main-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .desk-quote-badge {
+      position: absolute;
+      bottom: -18px;
+      right: -14px;
+      background: #ffffff;
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-float);
+      border-left: 5px solid var(--saffron);
+      max-width: 280px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1.5;
+    }
+    .desk-copy h2 {
+      font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+      color: var(--green-dark);
+      font-weight: 900;
+      line-height: 1.3;
+      margin: 10px 0 14px;
+    }
+    .desk-copy p {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .panch-sankalp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 22px 0 28px;
+    }
+    .sankalp-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      padding: 11px 14px;
+      border-radius: var(--radius-xs);
+      border: 1px solid var(--line);
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      box-shadow: var(--shadow-app);
+    }
+    .sankalp-item .check-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    /* HORIZONTAL SCROLLABLE FILTER CHIPS (App-Style) */
+    .chips-filter-wrapper {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 4px 2px 18px;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+    .chips-filter-wrapper::-webkit-scrollbar { display: none; }
+    .chip-btn {
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .chip-btn.active, .chip-btn:hover {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+      box-shadow: 0 4px 12px rgba(12, 74, 52, 0.2);
+    }
+
+    /* SCHEMES GRID (Strictly 2 cards per row on mobile) */
+    .schemes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .scheme-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      padding: 20px 16px;
+      box-shadow: var(--shadow-app);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .scheme-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+      border-color: var(--green-medium);
+    }
+    .scheme-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-sm);
+      background: var(--saffron-light);
+      color: var(--saffron);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      border: 1px solid var(--saffron-border);
+      flex-shrink: 0;
+    }
+    .scheme-card.green .scheme-icon {
+      background: var(--green-light);
+      color: var(--green);
+      border-color: var(--green-border);
+    }
+    .scheme-card.gold .scheme-icon {
+      background: var(--gold-light);
+      color: var(--gold);
+      border-color: #fde68a;
+    }
+    .scheme-type {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--saffron);
+      margin-bottom: 4px;
+    }
+    .scheme-card h3 {
+      font-size: 1.05rem;
+      color: var(--green-dark);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .scheme-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+    .scheme-benefit {
+      background: #f8fafc;
+      border-left: 3px solid var(--green);
+      padding: 7px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .scheme-btn {
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: auto;
+    }
+
+    /* PROJECTS GRID (Strictly 2 cards per row on mobile) */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .project-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-app);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+    .project-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+    .project-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .project-card:hover .project-img-wrap img {
+      transform: scale(1.06);
+    }
+    .project-status-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      white-space: nowrap;
+    }
+    .status-completed { background: #10b981; color: #ffffff; }
+    .status-ongoing { background: #f59e0b; color: #ffffff; }
+    .status-sanctioned { background: #3b82f6; color: #ffffff; }
+
+    .project-budget-tag {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.78);
+      color: #fde047;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      backdrop-filter: blur(4px);
+    }
+    .project-body {
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .project-category {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--green-medium);
+      margin-bottom: 4px;
+    }
+    .project-body h3 {
+      font-size: 1.05rem;
+      color: var(--green-dark);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 6px;
+      /* Clamp to 2 lines for uniform card heights */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .project-body p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .progress-bar-wrap {
+      margin-bottom: 12px;
+    }
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .progress-track {
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green-medium) 0%, var(--green) 100%);
+    }
+    .progress-fill.amber {
+      background: linear-gradient(90deg, #f59e0b 0%, #ea580c 100%);
+    }
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .project-footer a {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    /* GRAM SABHA & NOTICES */
+    .notices-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+    .notice-feature-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-app);
+    }
+    .notice-feature-img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+    .notice-feature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .notice-feature-body {
+      padding: 22px;
+    }
+    .notice-badge {
+      display: inline-block;
+      background: var(--saffron-light);
+      color: var(--saffron);
+      border: 1px solid var(--saffron-border);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .notice-feature-body h3 {
+      font-size: 1.25rem;
+      color: var(--green-dark);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+    .notice-feature-body p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .notice-list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .notice-item {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-app);
+    }
+    .notice-item:hover {
+      border-color: var(--green);
+      transform: translateX(3px);
+    }
+    .notice-date-box {
+      width: 52px;
+      height: 58px;
+      background: var(--green-light);
+      border-radius: var(--radius-xs);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-dark);
+      flex-shrink: 0;
+      border: 1px solid var(--green-border);
+    }
+    .notice-date-day {
+      font-size: 1.3rem;
+      font-weight: 900;
+      line-height: 1;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .notice-date-month {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--green-medium);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .notice-content h4 {
+      font-size: 0.94rem;
+      color: var(--green-dark);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+    .notice-content p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* PHOTO GALLERY (Strictly 2 cards per row on mobile) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      background: #cbd5e1;
+      box-shadow: var(--shadow-app);
+      aspect-ratio: 4/3;
+    }
+    .gallery-item.span-2 {
+      grid-column: span 2;
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+    .gallery-item:hover img, .gallery-item:active img {
+      transform: scale(1.05);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(6, 38, 26, 0.92) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 12px;
+      color: white;
+    }
+    .gallery-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #fde047;
+      margin-bottom: 2px;
+    }
+    .gallery-caption {
+      font-size: 0.85rem;
+      font-weight: 800;
+      line-height: 1.25;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* REPRESENTATIVES (Strictly 2 cards per row on mobile) */
+    .reps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .rep-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px 12px;
+      text-align: center;
+      box-shadow: var(--shadow-app);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .rep-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+      border-color: var(--green);
+    }
+    .rep-avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      border: 3px solid var(--saffron);
+      padding: 2px;
+      background: #fff;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .rep-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .rep-avatar-icon {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+    }
+    .rep-card h3 {
+      font-size: 0.98rem;
+      color: var(--green-dark);
+      font-weight: 800;
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+    .rep-role {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--saffron);
+      margin-bottom: 10px;
+    }
+    .rep-contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 0.76rem;
+      color: var(--green-dark);
+      font-weight: 700;
+      background: #f1f5f2;
+      padding: 5px 10px;
+      border-radius: 999px;
+      margin-top: auto;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* CITIZEN GRIEVANCE SECTION */
+    .contact-section {
+      background: linear-gradient(135deg, #093726 0%, #052016 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+    .contact-info-col h2 {
+      font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .contact-info-col p {
+      color: #cbd5e1;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .contact-card-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .contact-row:last-child { margin-bottom: 0; }
+    .contact-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-xs);
+      background: rgba(255, 255, 255, 0.14);
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      color: #fde047;
+    }
+    .contact-row-text small {
+      display: block;
+      color: #94a3b8;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .contact-row-text strong {
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    /* Grievance Form */
+    .form-container {
+      background: #ffffff;
+      color: var(--text-main);
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.25);
+    }
+    .form-header {
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+    }
+    .form-header h3 {
+      font-size: 1.35rem;
+      color: var(--green-dark);
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .form-header p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .form-grid-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field-full { grid-column: 1 / -1; }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .field-group label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--green-dark);
+    }
+    .field-group input, .field-group textarea, .field-group select {
+      width: 100%;
+      border: 1.5px solid var(--line);
+      background: #fafaf9;
+      border-radius: var(--radius-xs);
+      padding: 10px 12px;
+      outline: none;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+    .field-group input:focus, .field-group textarea:focus, .field-group select:focus {
+      border-color: var(--green);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(12, 74, 52, 0.12);
+    }
+    .field-group textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .form-submit-row {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #04140e;
+      color: #94a3b8;
+      padding: 50px 0 80px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.85rem;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 0.9fr;
+      gap: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .brand-main {
+      color: #fff;
+      font-size: 1.4rem;
+    }
+    .footer-brand p {
+      margin: 12px 0 18px;
+      line-height: 1.65;
+      color: #cbd5e1;
+      max-width: 360px;
+      font-size: 0.84rem;
+    }
+    .footer-links h4 {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-links a {
+      color: #94a3b8;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fde047; }
+    .footer-bottom {
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.78rem;
+    }
+    .disclaimer-text {
+      color: #64748b;
+      max-width: 700px;
+      line-height: 1.55;
+    }
+
+    /* MOBILE NATIVE APP BOTTOM DOCK NAVIGATION */
+    .mobile-app-dock {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid var(--line);
+      padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+      box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+    }
+    .dock-items-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+      gap: 4px;
+    }
+    .dock-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 6px 2px;
+      border-radius: var(--radius-xs);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 800;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .dock-nav-item .dock-icon {
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+    .dock-nav-item:active, .dock-nav-item.active {
+      color: var(--green);
+      background: rgba(12, 74, 52, 0.08);
+    }
+    .dock-nav-item.highlight {
+      color: var(--saffron);
+    }
+
+    /* TOAST & LIGHTBOX */
+    .toast {
+      position: fixed;
+      bottom: 84px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 150;
+      white-space: nowrap;
+      max-width: 90%;
+      text-align: center;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 18, 12, 0.95);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content {
+      max-width: 900px;
+      max-height: 85vh;
+      position: relative;
+      text-align: center;
+      width: 100%;
+    }
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      margin: 0 auto;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .lightbox-caption {
+      color: #f1f5f9;
+      margin-top: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -42px;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #0f172a;
+      font-size: 1.3rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    /* ========================================================
+       MOBILE APP RESPONSIVE SYSTEM (1 ROW 2 CARDS)
+       ======================================================== */
+    @media (max-width: 820px) {
+      .top-bar { display: none; }
+      .container { width: calc(100% - 24px); }
+      .section { padding: 44px 0; }
+      .section-head { margin-bottom: 26px; }
+
+      .nav-inner { height: 64px; }
+      .brand-emblem { width: 40px; height: 40px; font-size: 1.25rem; }
+      .brand-main { font-size: 1.15rem; }
+      .brand-sub { font-size: 0.68rem; }
+      .nav-actions .btn-primary { display: none; }
+      .hamburger { display: grid; }
+
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 12px;
+        right: 12px;
+        background: #ffffff;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-float);
+        border: 1px solid var(--line);
+        padding: 14px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-menu.open { display: flex; }
+
+      /* Hero Section Mobile */
+      .hero { padding: 32px 0 52px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 26px; }
+      .hero-content { text-align: center; }
+      .hero-badge-strip { margin: 0 auto 14px; font-size: 0.76rem; }
+      .hero-actions { justify-content: center; }
+      .hero-actions .btn { width: 100%; }
+      .hero-quick-meta { grid-template-columns: 1fr; gap: 8px; text-align: left; }
+      .hero-visual { max-width: 330px; margin: 0 auto; width: 100%; }
+      .mukhiya-card { transform: none; padding: 10px; }
+      .seal-stamp { width: 80px; height: 80px; font-size: 0.62rem; right: -8px; bottom: -8px; }
+
+      /* App Shortcuts: 1 row 2 cards or 4 compact columns */
+      .shortcuts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .shortcut-card { padding: 12px 10px; }
+      .shortcut-icon-wrap { width: 40px; height: 40px; font-size: 1.3rem; margin-bottom: 6px; }
+      .shortcut-title { font-size: 0.82rem; }
+      .shortcut-sub { font-size: 0.68rem; }
+
+      /* Stats: 2 cards per row on mobile */
+      .stats-card-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 14px 8px;
+      }
+      .stat-box {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 10px 6px;
+      }
+      .stat-box:nth-child(even) { border-right: none; }
+      .stat-box:nth-child(5) {
+        grid-column: span 2;
+        border-bottom: none;
+      }
+      .stat-box-num { font-size: 1.55rem; }
+      .stat-box-label { font-size: 0.72rem; }
+
+      /* About / Mukhiya Desk Mobile */
+      .desk-grid { grid-template-columns: 1fr; gap: 24px; }
+      .desk-quote-badge { position: relative; bottom: auto; right: auto; margin-top: 10px; max-width: 100%; font-size: 0.82rem; padding: 12px 14px; }
+      .panch-sankalp-grid { grid-template-columns: 1fr; gap: 8px; }
+
+      /* Horizontal scrolling chips */
+      .chips-filter-wrapper {
+        justify-content: flex-start;
+        padding-left: 4px;
+        margin-bottom: 16px;
+      }
+
+      /* ========================================================
+         CORE USER REQUIREMENT: 1 ROW 2 CARDS ON MOBILE!
+         ======================================================== */
+      .schemes-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+      .scheme-card {
+        padding: 12px 10px !important;
+        border-radius: var(--radius-sm) !important;
+      }
+      .scheme-icon {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 8px !important;
+      }
+      .scheme-type { font-size: 0.66rem !important; }
+      .scheme-card h3 {
+        font-size: 0.88rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 6px !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .scheme-card p {
+        font-size: 0.74rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 10px !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .scheme-benefit {
+        font-size: 0.68rem !important;
+        padding: 5px 8px !important;
+        margin-bottom: 10px !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .scheme-btn { font-size: 0.74rem !important; }
+
+      /* Projects: 1 ROW 2 CARDS ON MOBILE */
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+      .project-card {
+        border-radius: var(--radius-sm) !important;
+      }
+      .project-img-wrap {
+        aspect-ratio: 16/11 !important;
+      }
+      .project-status-tag {
+        top: 6px !important;
+        left: 6px !important;
+        padding: 3px 7px !important;
+        font-size: 0.6rem !important;
+      }
+      .project-budget-tag {
+        bottom: 6px !important;
+        right: 6px !important;
+        padding: 2px 6px !important;
+        font-size: 0.62rem !important;
+      }
+      .project-body {
+        padding: 10px 8px !important;
+      }
+      .project-category { font-size: 0.65rem !important; }
+      .project-body h3 {
+        font-size: 0.86rem !important;
+        line-height: 1.3 !important;
+        margin: 4px 0 5px !important;
+      }
+      .project-body p {
+        font-size: 0.72rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+      }
+      .progress-labels { font-size: 0.65rem !important; }
+      .progress-track { height: 5px !important; }
+      .project-footer {
+        font-size: 0.68rem !important;
+        padding-top: 8px !important;
+      }
+
+      /* Gallery: 1 ROW 2 CARDS ON MOBILE */
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+      }
+      .gallery-item.span-2 {
+        grid-column: span 2 !important;
+        grid-row: auto !important;
+        aspect-ratio: 16/10 !important;
+      }
+      .gallery-item {
+        aspect-ratio: 1/1 !important;
+        border-radius: var(--radius-xs) !important;
+      }
+      .gallery-overlay { padding: 8px !important; }
+      .gallery-tag { font-size: 0.62rem !important; }
+      .gallery-caption { font-size: 0.75rem !important; }
+
+      /* Representatives: 1 ROW 2 CARDS ON MOBILE */
+      .reps-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+      .rep-card {
+        padding: 12px 8px !important;
+        border-radius: var(--radius-sm) !important;
+      }
+      .rep-avatar {
+        width: 60px !important;
+        height: 60px !important;
+        margin-bottom: 8px !important;
+      }
+      .rep-avatar-icon { font-size: 1.5rem !important; }
+      .rep-card h3 { font-size: 0.88rem !important; }
+      .rep-role { font-size: 0.68rem !important; margin-bottom: 6px !important; }
+      .rep-contact { font-size: 0.7rem !important; padding: 4px 6px !important; }
+
+      /* Notices Mobile */
+      .notices-grid { grid-template-columns: 1fr; gap: 16px; }
+      .notice-feature-body { padding: 16px; }
+      .notice-feature-body h3 { font-size: 1.1rem; }
+      .notice-item { padding: 10px 12px; gap: 10px; }
+      .notice-date-box { width: 46px; height: 50px; }
+      .notice-date-day { font-size: 1.15rem; }
+      .notice-content h4 { font-size: 0.86rem; }
+      .notice-content p { font-size: 0.72rem; }
+
+      /* Grievance & Contact Mobile */
+      .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+      .form-container { padding: 20px 16px; border-radius: var(--radius-md); }
+      .form-grid-fields { grid-template-columns: 1fr; gap: 12px; }
+
+      /* Footer Mobile */
+      .footer { padding-bottom: 90px; }
+      .footer-top { grid-template-columns: 1fr; gap: 26px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      /* Mobile App Dock Display */
+      .mobile-app-dock { display: block; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-content h1 { font-size: 1.7rem; }
+      .brand-main { font-size: 1.05rem; }
+      .dock-nav-item { font-size: 0.64rem; }
+      .dock-nav-item .dock-icon { font-size: 1.15rem; }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="topline">
-        <div class="container"><span>🌿 <strong>हमारा गांव, हमारी पहचान</strong> · ग्राम पंचायत की जन-सूचना
-                वेबसाइट</span><span id="locationLine">ग्राम पंचायत आदर्शपुर · जिला — अपना जिला</span></div>
-    </div>
-    <header class="header">
-        <div class="container nav"><a class="brand" href="#home"><span class="mark">🌱</span><span><span
-                        class="brandname" id="brandName">ग्रामसेतु</span><span class="sub">ग्राम पंचायत ·
-                        जनसंपर्क</span></span></a>
-            <nav class="links" id="navLinks"><a href="#home">होम</a><a href="#about">परिचय</a><a href="#works">विकास
-                    कार्य</a><a href="#vision">हमारा विज़न</a><a href="#gallery">गैलरी</a><a href="#updates">अपडेट</a><a
-                    href="#contact">संपर्क</a></nav>
-            <div class="navright"><a class="btn primary small" href="#contact">संपर्क करें ↗</a><button class="hamb"
-                    id="menuToggle" aria-label="मेन्यू खोलें" aria-expanded="false">☰</button></div>
-        </div>
-    </header>
-    <main>
-        <section class="hero" id="home">
-            <div class="container herogrid">
-                <div><span class="eyebrow">जनसेवा · पारदर्शिता · विकास</span>
-                    <h1>हमारे गांव का विकास,<br><span>हमारी सामूहिक जिम्मेदारी।</span></h1>
-                    <p><strong id="heroName">श्री राम प्रसाद</strong> — ग्राम पंचायत <strong
-                            id="heroVillage">आदर्शपुर</strong> के जनप्रतिनिधि। गांव की जरूरतों, विकास कार्यों और
-                        जनसंपर्क की जानकारी एक ही जगह।</p>
-                    <div class="actions"><a class="btn light" href="#about">परिचय जानें →</a><a class="btn outline"
-                            href="#works">विकास कार्य देखें</a></div>
-                    <div class="meta"><span>📍 <b id="heroDistrict">जिला — अपना जिला</b></span><span>🏡 <b
-                                id="heroBlock">ब्लॉक — अपना ब्लॉक</b></span><span>🤝 जनसेवा के लिए समर्पित</span></div>
-                </div>
-                <div class="visual">
-                    <div class="frame"><img id="profilePhoto"
-                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85"
-                            alt="जनप्रतिनिधि का डेमो प्रोफाइल फोटो"></div>
-                    <div class="tag"><small>आपका जनप्रतिनिधि</small><strong id="portraitName">श्री राम प्रसाद</strong>
-                    </div>
-                    <div class="stamp">जनसेवा<br>सर्वोपरि</div>
-                </div>
-            </div>
-        </section>
-        <div class="strip">
-            <div class="container">
-                <div class="stats">
-                    <div class="stat"><strong>08</strong><span>दर्ज विकास पहल</span></div>
-                    <div class="stat"><strong>04</strong><span>प्राथमिकता क्षेत्र</span></div>
-                    <div class="stat"><strong>12</strong><span>जनसंवाद गतिविधियां</span></div>
-                    <div class="stat"><strong>01</strong><span>हमारा साझा गांव</span></div>
-                </div>
-            </div>
-        </div>
-        <section class="section" id="about">
-            <div class="container intro">
-                <div class="introimg"><img
-                        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
-                        alt="गांव और हरियाली का दृश्य">
-                    <div class="note">“गांव की तरक्की में हर नागरिक की भागीदारी जरूरी है।”</div>
-                </div>
-                <div class="introcopy"><span class="eyebrow">हमारे प्रतिनिधि</span>
-                    <h2>आपकी आवाज़, आपके गांव की प्राथमिकताएं।</h2>
-                    <p><strong id="aboutName">श्री राम प्रसाद</strong> ग्राम पंचायत <strong
-                            id="aboutVillage">आदर्शपुर</strong> के विकास और जनसंपर्क से जुड़ी जानकारी साझा करने के लिए
-                        यह डिजिटल मंच प्रस्तुत है। यहां गांव के काम, प्रस्तावित योजनाएं और सार्वजनिक गतिविधियों का विवरण
-                        देखा जा सकता है।</p>
-                    <p>हमारा उद्देश्य है कि जानकारी आसानी से उपलब्ध हो और गांव के नागरिक अपने सुझाव व समस्याएं जिम्मेदार
-                        प्रतिनिधि तक पहुंचा सकें।</p>
-                    <div class="checks">
-                        <div class="check"><i>✓</i> जनसुनवाई और संवाद</div>
-                        <div class="check"><i>✓</i> विकास कार्यों की जानकारी</div>
-                        <div class="check"><i>✓</i> पारदर्शी अपडेट</div>
-                        <div class="check"><i>✓</i> नागरिकों की भागीदारी</div>
-                    </div><a class="btn primary" href="#contact">अपना सुझाव भेजें →</a>
-                </div>
-            </div>
-        </section>
-        <section class="section soft" id="works">
-            <div class="container">
-                <div class="head">
-                    <div><span class="eyebrow">जमीन से जुड़ा काम</span>
-                        <h2>गांव के विकास कार्य</h2>
-                    </div>
-                    <p>विकास परियोजनाओं की स्थिति, स्थान और जरूरी जानकारी यहां साझा की जाएगी। नीचे दिए गए कार्ड डेमो
-                        उदाहरण हैं।</p>
-                </div>
-                <div class="filters"><button class="filter active" data-filter="all">सभी कार्य</button><button
-                        class="filter" data-filter="completed">पूर्ण</button><button class="filter"
-                        data-filter="ongoing">प्रगति पर</button><button class="filter"
-                        data-filter="proposed">प्रस्तावित</button></div>
-                <div class="projects" id="projectGrid">
-                    <article class="card" data-status="completed">
-                        <div class="projectimg"><img loading="lazy"
-                                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
-                                alt="ग्रामीण क्षेत्र"><span class="status">डेमो · पूर्ण</span></div>
-                        <div class="cardbody"><span class="type">सड़क एवं आवागमन</span>
-                            <h3>मुख्य मार्ग सुधार कार्य</h3>
-                            <p>गांव के मुख्य मार्ग को बेहतर बनाने से जुड़ा उदाहरण प्रोजेक्ट।</p>
-                            <div class="foot"><span>📍 मुख्य गांव मार्ग</span><a href="#contact">विवरण ↗</a></div>
-                        </div>
-                    </article>
-                    <article class="card" data-status="ongoing">
-                        <div class="projectimg"><img loading="lazy"
-                                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80"
-                                alt="निर्माण कार्य"><span class="status ongoing">डेमो · प्रगति पर</span></div>
-                        <div class="cardbody"><span class="type">सामुदायिक सुविधा</span>
-                            <h3>सार्वजनिक सुविधा केंद्र</h3>
-                            <p>स्थानीय नागरिकों के उपयोग हेतु सुविधा विकसित करने का उदाहरण।</p>
-                            <div class="foot"><span>📍 पंचायत क्षेत्र</span><a href="#contact">विवरण ↗</a></div>
-                        </div>
-                    </article>
-                    <article class="card" data-status="proposed">
-                        <div class="projectimg"><img loading="lazy"
-                                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-                                alt="डिजिटल सुविधा"><span class="status proposed">डेमो · प्रस्तावित</span></div>
-                        <div class="cardbody"><span class="type">डिजिटल सुविधा</span>
-                            <h3>डिजिटल जनसुविधा पहल</h3>
-                            <p>नागरिकों तक जरूरी जानकारी ऑनलाइन पहुंचाने की प्रस्तावित पहल।</p>
-                            <div class="foot"><span>📍 ग्राम पंचायत</span><a href="#contact">विवरण ↗</a></div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section class="section" id="vision">
-            <div class="container">
-                <div class="head">
-                    <div><span class="eyebrow">आने वाले समय की प्राथमिकताएं</span>
-                        <h2>हमारा गांव, हमारा विज़न</h2>
-                    </div>
-                    <p>गांव की जरूरतों और नागरिकों के सुझावों के आधार पर विकास की प्राथमिकताएं तय की जा सकती हैं।</p>
-                </div>
-                <div class="visions">
-                    <div class="vision">
-                        <div class="vicon">🛣️</div>
-                        <h3>बेहतर सड़कें</h3>
-                        <p>सुरक्षित आवागमन और रास्तों की बेहतर व्यवस्था।</p>
-                    </div>
-                    <div class="vision">
-                        <div class="vicon">💧</div>
-                        <h3>स्वच्छ पेयजल</h3>
-                        <p>स्वच्छ पानी और जल-सुविधाओं पर ध्यान।</p>
-                    </div>
-                    <div class="vision">
-                        <div class="vicon">🧹</div>
-                        <h3>स्वच्छ गांव</h3>
-                        <p>सफाई, कचरा प्रबंधन और जल निकासी।</p>
-                    </div>
-                    <div class="vision">
-                        <div class="vicon">💡</div>
-                        <h3>रोशनी की व्यवस्था</h3>
-                        <p>जरूरी सार्वजनिक स्थानों पर प्रकाश सुविधा।</p>
-                    </div>
-                    <div class="vision">
-                        <div class="vicon">📚</div>
-                        <h3>शिक्षा</h3>
-                        <p>विद्यालयों और सीखने के माहौल को बेहतर बनाना।</p>
-                    </div>
-                    <div class="vision">
-                        <div class="vicon">🩺</div>
-                        <h3>स्वास्थ्य</h3>
-                        <p>स्वास्थ्य सेवाओं की जानकारी और पहुंच।</p>
-                    </div>
-                    <div class="vision">
-                        <div class="vicon">🌳</div>
-                        <h3>हरित पंचायत</h3>
-                        <p>पेड़-पौधे, पर्यावरण और सार्वजनिक स्थान।</p>
-                    </div>
-                    <div class="vision">
-                        <div class="vicon">🤝</div>
-                        <h3>जनभागीदारी</h3>
-                        <p>बैठक, सुझाव और सामूहिक निर्णय प्रक्रिया।</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section soft" id="gallery">
-            <div class="container">
-                <div class="head">
-                    <div><span class="eyebrow">तस्वीरों में गांव</span>
-                        <h2>फोटो गैलरी</h2>
-                    </div>
-                    <p>ग्राम सभा, जनसंवाद, कार्यक्रम और विकास कार्यों की वास्तविक तस्वीरें यहां जोड़ी जा सकती हैं।</p>
-                </div>
-                <div class="gallery"><button
-                        data-image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1500&q=90"><img
-                            loading="lazy"
-                            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
-                            alt="गांव का दृश्य"><span>गांव और आसपास</span></button><button
-                        data-image="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1500&q=90"><img
-                            loading="lazy"
-                            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=700&q=80"
-                            alt="निर्माण गतिविधि"><span>विकास गतिविधि</span></button><button
-                        data-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1500&q=90"><img
-                            loading="lazy"
-                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
-                            alt="डिजिटल सेवा"><span>डिजिटल पहल</span></button><button
-                        data-image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=90"><img
-                            loading="lazy"
-                            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=80"
-                            alt="बैठक स्थल"><span>बैठक एवं संवाद</span></button><button
-                        data-image="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1500&q=90"><img
-                            loading="lazy"
-                            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=700&q=80"
-                            alt="हरित परिवेश"><span>हरित परिवेश</span></button></div>
-            </div>
-        </section>
-        <section class="section" id="updates">
-            <div class="container">
-                <div class="head">
-                    <div><span class="eyebrow">ताजा जानकारी</span>
-                        <h2>सूचनाएं और अपडेट</h2>
-                    </div>
-                    <p>जनसभा, सार्वजनिक सूचना, बैठक और विकास कार्यों से जुड़े अपडेट यहां प्रकाशित किए जा सकते हैं।</p>
-                </div>
-                <div class="updates">
-                    <article class="feature"><img loading="lazy"
-                            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1100&q=85"
-                            alt="समुदाय की बैठक">
-                        <div class="updatebody"><span class="date">डेमो अपडेट · 05 नवंबर 2026</span>
-                            <h3>ग्राम सभा और नागरिक सुझाव बैठक</h3>
-                            <p>गांव की प्राथमिक जरूरतों, सुविधाओं और प्रस्तावित कार्यों पर चर्चा के लिए बैठक की सूचना।
-                                वास्तविक तारीख और विवरण व्यवस्थापक द्वारा अपडेट करें।</p>
-                        </div>
-                    </article>
-                    <div class="updatelist">
-                        <article class="mini">
-                            <div class="datebox"><strong>08</strong><span>नवंबर</span></div>
-                            <div>
-                                <h4>सफाई एवं स्वच्छता जागरूकता</h4>
-                                <p>डेमो सूचना · समय और स्थान अपडेट करें।</p>
-                            </div>
-                        </article>
-                        <article class="mini">
-                            <div class="datebox"><strong>12</strong><span>नवंबर</span></div>
-                            <div>
-                                <h4>जनसुनवाई दिवस</h4>
-                                <p>डेमो सूचना · वास्तविक कार्यक्रम की पुष्टि करें।</p>
-                            </div>
-                        </article>
-                        <article class="mini">
-                            <div class="datebox"><strong>18</strong><span>नवंबर</span></div>
-                            <div>
-                                <h4>विकास प्राथमिकताओं पर चर्चा</h4>
-                                <p>डेमो सूचना · विवरण अपडेट करें।</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section contact" id="contact">
-            <div class="container contactgrid">
-                <div class="contactcopy"><span class="eyebrow">हमसे जुड़ें</span>
-                    <h2>आपका सुझाव, गांव के विकास में एक कदम।</h2>
-                    <p>किसी समस्या, सुझाव या जानकारी के लिए संपर्क करें। कृपया सही संपर्क विवरण वेबसाइट प्रकाशित करने से
-                        पहले अपडेट करें।</p>
-                    <div class="detail"><span class="symbol">📞</span>
-                        <div><small>फोन नंबर</small><strong id="phoneDisplay">+91 98765 43210 (डेमो)</strong></div>
-                    </div>
-                    <div class="detail"><span class="symbol">✉️</span>
-                        <div><small>ईमेल</small><strong id="emailDisplay">sampark@example.com</strong></div>
-                    </div>
-                    <div class="detail"><span class="symbol">📍</span>
-                        <div><small>पता</small><strong id="addressDisplay">ग्राम पंचायत आदर्शपुर, अपना जिला,
-                                भारत</strong></div>
-                    </div>
-                    <div class="mapbox"><strong>📌 पंचायत कार्यालय / लोकेशन</strong><span>यहां सही Google Maps लिंक और
-                            कार्यालय का पता जोड़ें।</span><br><a id="mapLink" class="btn light small"
-                            href="https://www.google.com/maps" target="_blank" rel="noopener"
-                            style="margin-top:12px">मैप पर देखें ↗</a></div>
-                </div>
-                <form class="form" id="contactForm">
-                    <h3>अपना संदेश भेजें</h3>
-                    <p>फॉर्म भरें — संदेश WhatsApp पर तैयार होगा।</p>
-                    <div class="formgrid">
-                        <div class="field"><label for="name">आपका नाम *</label><input id="name" required
-                                placeholder="अपना नाम लिखें"></div>
-                        <div class="field"><label for="mobile">मोबाइल नंबर *</label><input id="mobile" required
-                                inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10 अंकों का नंबर">
-                        </div>
-                        <div class="field"><label for="village">गांव / वार्ड</label><input id="village"
-                                placeholder="गांव या वार्ड"></div>
-                        <div class="field"><label for="subject">विषय</label><select id="subject">
-                                <option>सुझाव</option>
-                                <option>समस्या / शिकायत</option>
-                                <option>विकास कार्य</option>
-                                <option>अन्य जानकारी</option>
-                            </select></div>
-                        <div class="field full"><label for="message">आपका संदेश *</label><textarea id="message" required
-                                placeholder="अपनी बात यहां लिखें..."></textarea></div>
-                        <div class="field full"><button class="btn primary" type="submit">WhatsApp पर संदेश भेजें
-                                ↗</button></div>
-                    </div>
-                    <div class="hint">डेमो वेबसाइट: संदेश भेजने से पहले CONFIG में अपना सही WhatsApp नंबर डालें।</div>
-                </form>
-            </div>
-        </section>
-    </main>
-    <footer class="footer">
-        <div class="container">
-            <div class="footerinner"><a class="brand" href="#home"><span class="mark">🌱</span><span><span
-                            class="brandname">ग्रामसेतु</span><span class="sub">ग्राम पंचायत ·
-                            जनसंपर्क</span></span></a>
-                <div class="footerlinks"><a href="#about">परिचय</a><a href="#works">विकास कार्य</a><a
-                        href="#gallery">गैलरी</a><a href="#contact">संपर्क</a><a href="#" id="shareBtn">वेबसाइट शेयर
-                        करें</a></div>
-            </div>
-            <p class="disclaimer">अस्वीकरण: यह एक डेमो / जनसंपर्क वेबसाइट टेम्पलेट है, किसी सरकारी विभाग या सरकारी
-                पोर्टल की आधिकारिक वेबसाइट नहीं। यहां दिखाए गए नाम, फोटो, आंकड़े, परियोजनाएं और सूचनाएं उदाहरण के लिए
-                हैं। प्रकाशित करने से पहले सभी जानकारी की पुष्टि करें और आवश्यक अनुमति प्राप्त करें।</p>
-            <p class="disclaimer">© <span id="year"></span> ग्रामसेतु · सर्वाधिकार सुरक्षित।</p>
-        </div>
-    </footer>
-    <div class="mobilebar"><a id="callAction" href="tel:+919876543210">☎ कॉल</a><a id="whatsAction"
-            href="https://wa.me/919876543210" target="_blank" rel="noopener">◉ WhatsApp</a><a href="#contact">✉
-            संदेश</a></div>
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="फोटो देखें"><button
-            id="lightboxClose" aria-label="बंद करें">×</button><img id="lightboxImage" src="" alt="गैलरी फोटो"></div>
-    <script>
-        /* EDIT THIS CONFIG BEFORE USING FOR A REAL MUKHIYA. Replace demo content with verified details. WhatsApp: country code + number, digits only (example 919876543210). */
-        const CONFIG = { siteName: "ग्रामसेतु", mukhiyaName: "श्री राम प्रसाद", village: "आदर्शपुर", block: "अपना ब्लॉक", district: "अपना जिला", state: "उत्तर प्रदेश", phoneDisplay: "+91 98765 43210 (डेमो)", phoneLink: "+919876543210", whatsapp: "919876543210", email: "sampark@example.com", address: "ग्राम पंचायत आदर्शपुर, अपना जिला, उत्तर प्रदेश", mapUrl: "https://www.google.com/maps", profilePhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85" };
-        document.title = `${CONFIG.siteName} | ${CONFIG.mukhiyaName}`; const set = (id, v) => document.getElementById(id).textContent = v; set("brandName", CONFIG.siteName);["heroName", "portraitName", "aboutName"].forEach(id => set(id, CONFIG.mukhiyaName));["heroVillage", "aboutVillage"].forEach(id => set(id, CONFIG.village)); set("heroDistrict", `जिला — ${CONFIG.district}`); set("heroBlock", `ब्लॉक — ${CONFIG.block}`); set("locationLine", `ग्राम पंचायत ${CONFIG.village} · जिला ${CONFIG.district}`); set("phoneDisplay", CONFIG.phoneDisplay); set("emailDisplay", CONFIG.email); set("addressDisplay", CONFIG.address); document.getElementById("profilePhoto").src = CONFIG.profilePhoto; document.getElementById("mapLink").href = CONFIG.mapUrl; document.getElementById("callAction").href = `tel:${CONFIG.phoneLink}`; document.getElementById("whatsAction").href = `https://wa.me/${CONFIG.whatsapp}`; set("year", new Date().getFullYear());
-        const menu = document.getElementById("navLinks"), toggle = document.getElementById("menuToggle"); toggle.addEventListener("click", () => { let open = menu.classList.toggle("open"); toggle.setAttribute("aria-expanded", String(open)); toggle.textContent = open ? "×" : "☰" }); menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("open"); toggle.setAttribute("aria-expanded", "false"); toggle.textContent = "☰" }));
-        document.querySelectorAll(".filter").forEach(b => b.addEventListener("click", () => { document.querySelectorAll(".filter").forEach(x => x.classList.remove("active")); b.classList.add("active"); document.querySelectorAll(".card").forEach(c => c.hidden = b.dataset.filter !== "all" && c.dataset.status !== b.dataset.filter) }));
-        const box = document.getElementById("lightbox"), boximg = document.getElementById("lightboxImage"); document.querySelectorAll(".gallery button").forEach(b => b.addEventListener("click", () => { boximg.src = b.dataset.image; box.classList.add("open"); document.getElementById("lightboxClose").focus() })); function closeBox() { box.classList.remove("open"); boximg.src = "" } document.getElementById("lightboxClose").addEventListener("click", closeBox); box.addEventListener("click", e => { if (e.target === box) closeBox() }); document.addEventListener("keydown", e => { if (e.key === "Escape") closeBox() });
-        function toast(msg) { let t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 2800) } document.getElementById("contactForm").addEventListener("submit", e => { e.preventDefault(); let f = e.currentTarget; if (!f.reportValidity()) return; let m = document.getElementById("mobile").value.trim(); if (!/^[0-9]{10}$/.test(m)) { toast("कृपया 10 अंकों का सही मोबाइल नंबर लिखें।"); return } let msg = ["नमस्ते, वेबसाइट से एक नया संदेश मिला है।", `नाम: ${document.getElementById("name").value.trim()}`, `मोबाइल: ${m}`, `गांव / वार्ड: ${document.getElementById("village").value.trim() || "नहीं बताया"}`, `विषय: ${document.getElementById("subject").value}`, `संदेश: ${document.getElementById("message").value.trim()}`].join("\n"); window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank", "noopener") }); document.getElementById("shareBtn").addEventListener("click", async e => { e.preventDefault(); let d = { title: document.title, text: `${CONFIG.mukhiyaName} · ग्राम पंचायत ${CONFIG.village}`, url: location.href }; try { if (navigator.share) await navigator.share(d); else if (navigator.clipboard) { await navigator.clipboard.writeText(location.href); toast("वेबसाइट लिंक कॉपी हो गया।") } else toast("ब्राउज़र में शेयर विकल्प उपलब्ध नहीं है।") } catch (err) { } });
-    </script>
-</body>
 
+  <!-- National Tricolor Decorative Header Line -->
+  <div class="tricolor-stripe"></div>
+
+  <!-- Desktop Helpline Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-badge">🇮🇳 डिजिटल ग्राम पंचायत</span>
+        <div class="top-bar-helplines">
+          <span>🚨 पुलिस: <a href="tel:112">112</a></span>
+          <span>🚑 एम्बुलेंस: <a href="tel:108">108</a></span>
+          <span>🌾 किसान सेवा: <a href="tel:18001801551">1800-180-1551</a></span>
+          <span>📞 पंचायत: <a href="tel:+919876543210" id="topPhone">+91 98765 43210</a></span>
+        </div>
+      </div>
+      <div style="font-size:0.76rem; color:#cbd5e1;">
+        <span>📍 <span id="topLocation">ग्राम पंचायत आदर्शपुर · ब्लॉक सदर · वाराणसी</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Main App Header -->
+  <header class="main-header">
+    <div class="container nav-inner">
+      <a href="#home" class="brand-group">
+        <div class="brand-emblem">🌾</div>
+        <div class="brand-titles">
+          <span class="brand-main" id="brandTitle">ग्राम पंचायत आदर्शपुर</span>
+          <span class="brand-sub">
+            <span id="brandDistrict">जनपद वाराणसी, उत्तर प्रदेश</span>
+            <span class="dot"></span>
+            <span>सत्यमेव जयते</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#home" class="nav-link active">होम</a>
+        <a href="#schemes" class="nav-link">योजनाएं</a>
+        <a href="#projects" class="nav-link">विकास कार्य</a>
+        <a href="#notices" class="nav-link">ग्राम सभा</a>
+        <a href="#gallery" class="nav-link">गैलरी</a>
+        <a href="#reps" class="nav-link">प्रतिनिधि</a>
+        <a href="#contact" class="nav-link">शिकायत निवारण</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm">
+          <span>📋 शिकायत / सुझाव</span>
+        </a>
+        <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="btn btn-saffron btn-sm" id="navWhatsappBtn">
+          <span>💬 WhatsApp</span>
+        </a>
+        <button class="hamburger" id="menuToggleBtn" aria-label="मेनू खोलें" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="hero-pattern"></div>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-strip">
+            <span>🌿 जनसेवा · पारदर्शिता · चौमुखी विकास</span>
+          </div>
+          <h1>
+            विकसित गांव, समृद्ध किसान,<br>
+            <span class="highlight">सशक्त और आत्मनिर्भर पंचायत।</span>
+          </h1>
+          <p class="hero-subtitle">
+            ग्राम पंचायत <strong id="heroVillageName">आदर्शपुर</strong> के सम्मानित नागरिकों की सेवा, बुनियादी सुविधाओं के विस्तार और पारदर्शी शासन के लिए आपका समर्पित जन-मंच।
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-saffron">
+              <span>🚜 विकास कार्य देखें</span>
+              <span>→</span>
+            </a>
+            <a href="#contact" class="btn btn-outline-white">
+              <span>✍️ समस्या / सुझाव दर्ज करें</span>
+            </a>
+          </div>
+
+          <div class="hero-quick-meta">
+            <div class="hero-meta-item">
+              <div class="hero-meta-icon">🏛️</div>
+              <div class="hero-meta-text">
+                <small>मुखिया / ग्राम प्रधान</small>
+                <b id="heroMukhiyaName">श्री राम प्रसाद</b>
+              </div>
+            </div>
+            <div class="hero-meta-item">
+              <div class="hero-meta-icon">🏡</div>
+              <div class="hero-meta-text">
+                <small>ब्लॉक व जनपद</small>
+                <b id="heroBlockDistrict">ब्लॉक सदर, वाराणसी</b>
+              </div>
+            </div>
+            <div class="hero-meta-item">
+              <div class="hero-meta-icon">🤝</div>
+              <div class="hero-meta-text">
+                <small>जनसुनवाई</small>
+                <b>प्रतिदिन प्रातः 8 से 11 बजे</b>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mukhiya Hero Card -->
+        <div class="hero-visual">
+          <div class="mukhiya-card">
+            <div class="mukhiya-photo-wrap">
+              <img id="mainMukhiyaPortrait" src="images/mukhiya_portrait.jpg" alt="श्री राम प्रसाद - मुखिया">
+              <div class="mukhiya-badge-float">
+                <span>जनसेवक · 24×7 उपलब्ध</span>
+              </div>
+            </div>
+            <div class="mukhiya-card-info">
+              <h3 id="cardMukhiyaName">श्री राम प्रसाद</h3>
+              <p>मुखिया / ग्राम प्रधान · ग्राम पंचायत <span id="cardVillageName">आदर्शपुर</span></p>
+              <div class="mukhiya-card-actions">
+                <a href="tel:+919876543210" class="btn btn-primary btn-sm" id="callDirectBtn">
+                  <span>📞 कॉल करें</span>
+                </a>
+                <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="btn btn-saffron btn-sm" id="cardWhatsappBtn">
+                  <span>💬 WhatsApp</span>
+                </a>
+              </div>
+            </div>
+            <div class="seal-stamp">
+              ग्राम पंचायत<br><strong>आदर्शपुर</strong><br>सत्यमेव जयते
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APP SHORTCUTS BAR (Mobile Friendly 4 Tiles) -->
+    <div class="app-shortcuts-bar">
+      <div class="container">
+        <div class="shortcuts-grid">
+          <a href="#projects" class="shortcut-card">
+            <div class="shortcut-icon-wrap">🚜</div>
+            <span class="shortcut-title">विकास कार्य</span>
+            <span class="shortcut-sub">प्रगति रिपोर्ट</span>
+          </a>
+          <a href="#schemes" class="shortcut-card">
+            <div class="shortcut-icon-wrap">📜</div>
+            <span class="shortcut-title">सरकारी योजनाएं</span>
+            <span class="shortcut-sub">पात्रता व लाभ</span>
+          </a>
+          <a href="#contact" class="shortcut-card">
+            <div class="shortcut-icon-wrap">📋</div>
+            <span class="shortcut-title">शिकायत निवारण</span>
+            <span class="shortcut-sub">टोकन ट्रैकिंग</span>
+          </a>
+          <a href="#notices" class="shortcut-card">
+            <div class="shortcut-icon-wrap">📢</div>
+            <span class="shortcut-title">ग्राम सभा</span>
+            <span class="shortcut-sub">सूचना पट्ट</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VILLAGE STATS STRIP -->
+    <div class="stats-section-wrap">
+      <div class="container">
+        <div class="stats-card-container">
+          <div class="stat-box">
+            <div class="stat-box-icon">🏠</div>
+            <div class="stat-box-num">320+</div>
+            <div class="stat-box-label">स्वीकृत पक्के आवास (PMAY)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-icon">💧</div>
+            <div class="stat-box-num">100%</div>
+            <div class="stat-box-label">हर घर नल-जल कवरेज</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-icon">💡</div>
+            <div class="stat-box-num">185+</div>
+            <div class="stat-box-label">सोलर स्ट्रीट लाइटें</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-icon">🛣️</div>
+            <div class="stat-box-num">14.5</div>
+            <div class="stat-box-label">किमी सीसी रोड व नाली</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-icon">🌾</div>
+            <div class="stat-box-num">1,250+</div>
+            <div class="stat-box-label">पीएम किसान लाभार्थी</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MUKHIYA DESK / ABOUT SECTION -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="desk-grid">
+          <div class="desk-image-col">
+            <div class="desk-main-img">
+              <img src="images/panchayat_sabha.jpg" alt="ग्राम सभा बैठक">
+            </div>
+            <div class="desk-quote-badge">
+              “गांव का विकास केवल ईंट और पत्थरों से नहीं, बल्कि हर ग्रामीण के मान-सम्मान और खुशहाली से होता है।”
+            </div>
+          </div>
+          <div class="desk-copy">
+            <span class="eyebrow">मुखिया जी की कलम से</span>
+            <h2>ग्राम स्वराज और आत्मनिर्भर गांव का हमारा संकल्प</h2>
+            <p>
+              आदरणीय ग्रामवासियों, राम-राम व सादर प्रणाम! आपके अपार स्नेह और विश्वास से मुझे ग्राम पंचायत <strong id="aboutVillageHighlight">आदर्शपुर</strong> के मुखिया पद का दायित्व प्राप्त हुआ है। मेरा प्रत्येक दिन गांव के हर व्यक्ति के कल्याण, शुद्ध पेयजल, गुणवत्तापूर्ण शिक्षा और पक्की सड़कों के निर्माण के लिए समर्पित है।
+            </p>
+
+            <div class="panch-sankalp-grid">
+              <div class="sankalp-item">
+                <span class="check-icon">✓</span>
+                <span>पारदर्शी व भ्रष्टाचार मुक्त पंचायत</span>
+              </div>
+              <div class="sankalp-item">
+                <span class="check-icon">✓</span>
+                <span>हर घर शुद्ध पेयजल व पक्की नाली</span>
+              </div>
+              <div class="sankalp-item">
+                <span class="check-icon">✓</span>
+                <span>बालिका शिक्षा व डिजिटल सेवा केंद्र</span>
+              </div>
+              <div class="sankalp-item">
+                <span class="check-icon">✓</span>
+                <span>सुलभ स्वास्थ्य व नियमित टीकाकरण</span>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a href="#contact" class="btn btn-primary btn-sm">अपना सुझाव बताएं →</a>
+              <a href="#projects" class="btn btn-outline-green btn-sm">विकास कार्य देखें</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOVERNMENT SCHEMES (1 Row 2 Cards on Mobile) -->
+    <section class="section section-light-green" id="schemes">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">जनकल्याणकारी योजनाएं</span>
+          <h2>सरकारी योजनाएं और नागरिक अधिकार</h2>
+          <div class="jhalar-divider">
+            <span class="jhalar-line"></span>
+            <span class="jhalar-icon">❖</span>
+            <span class="jhalar-line right"></span>
+          </div>
+          <p>प्रमुख योजनाओं की पात्रता व लाभ। पंचायत सचिवालय में आपकी निःशुल्क सहायता की जाती है।</p>
+        </div>
+
+        <!-- Horizontal Scrollable Chips Filter -->
+        <div class="chips-filter-wrapper">
+          <button class="chip-btn active" data-schemefilter="all">सभी योजनाएं (8)</button>
+          <button class="chip-btn" data-schemefilter="kisan">🌾 किसान कल्याण</button>
+          <button class="chip-btn" data-schemefilter="awas">🏠 आवास व स्वच्छता</button>
+          <button class="chip-btn" data-schemefilter="health">🏥 स्वास्थ्य व पेंशन</button>
+          <button class="chip-btn" data-schemefilter="youth">👧 महिला व युवा</button>
+        </div>
+
+        <div class="schemes-grid" id="schemesGrid">
+          <!-- Scheme 1 -->
+          <article class="scheme-card gold" data-category="kisan">
+            <div class="scheme-icon">🌾</div>
+            <span class="scheme-type">कृषि कल्याण</span>
+            <h3>पीएम किसान सम्मान निधि</h3>
+            <p>पात्र किसान परिवारों को प्रतिवर्ष ₹6,000 की प्रत्यक्ष आर्थिक सहायता 3 किस्तों में।</p>
+            <div class="scheme-benefit">लाभ: ₹2,000 प्रति 4 माह</div>
+            <a href="#contact" class="scheme-btn">ई-केवाईसी सहायता ↗</a>
+          </article>
+
+          <!-- Scheme 2 -->
+          <article class="scheme-card" data-category="awas">
+            <div class="scheme-icon">🏠</div>
+            <span class="scheme-type">ग्रामीण आवास</span>
+            <h3>पीएम आवास योजना (ग्रामीण)</h3>
+            <p>कच्चे मकानों में रहने वाले या बेघर परिवारों को पक्का मकान निर्माण हेतु सीधी अनुदान राशि।</p>
+            <div class="scheme-benefit">अनुदान: ₹1,20,000 राशि</div>
+            <a href="#contact" class="scheme-btn">पात्रता सूची देखें ↗</a>
+          </article>
+
+          <!-- Scheme 3 -->
+          <article class="scheme-card green" data-category="awas">
+            <div class="scheme-icon">💧</div>
+            <span class="scheme-type">पेयजल सुरक्षा</span>
+            <h3>जल जीवन मिशन (हर घर जल)</h3>
+            <p>गांव के प्रत्येक ग्रामीण परिवार को व्यक्तिगत घरेलू नल से शुद्ध सुरक्षित पेयजल आपूर्ति।</p>
+            <div class="scheme-benefit">कवरेज: 100% ग्रामीण घर</div>
+            <a href="#contact" class="scheme-btn">कनेक्शन स्थिति ↗</a>
+          </article>
+
+          <!-- Scheme 4 -->
+          <article class="scheme-card" data-category="health">
+            <div class="scheme-icon">💳</div>
+            <span class="scheme-type">स्वास्थ्य रक्षा</span>
+            <h3>आयुष्मान भारत गोल्डन कार्ड</h3>
+            <p>चिह्नित गरीब परिवारों को सूचीबद्ध अस्पतालों में प्रतिवर्ष कैशलेस इलाज सुविधा।</p>
+            <div class="scheme-benefit">कवरेज: ₹5 लाख तक मुफ्त</div>
+            <a href="#contact" class="scheme-btn">गोल्डन कार्ड बनवाएं ↗</a>
+          </article>
+
+          <!-- Scheme 5 -->
+          <article class="scheme-card green" data-category="youth">
+            <div class="scheme-icon">👷</div>
+            <span class="scheme-type">रोजगार गारंटी</span>
+            <h3>मनरेगा (MGNREGA) जॉब</h3>
+            <p>ग्रामीण अकुशल श्रमिकों को वित्तीय वर्ष में 100 दिनों के सवेतन रोजगार की कानूनी गारंटी।</p>
+            <div class="scheme-benefit">भुगतान: सीधे बैंक खाते में</div>
+            <a href="#contact" class="scheme-btn">नया जॉब कार्ड ↗</a>
+          </article>
+
+          <!-- Scheme 6 -->
+          <article class="scheme-card gold" data-category="health">
+            <div class="scheme-icon">👵</div>
+            <span class="scheme-type">सामाजिक सुरक्षा</span>
+            <h3>वृद्धा/विधवा/दिव्यांग पेंशन</h3>
+            <p>बुजुर्गों, बेसहारा महिलाओं और दिव्यांगजनों को जीवन-यापन हेतु मासिक सम्मान पेंशन।</p>
+            <div class="scheme-benefit">पेंशन: ₹1,000 प्रतिमाह DBT</div>
+            <a href="#contact" class="scheme-btn">सत्यापन कराएं ↗</a>
+          </article>
+
+          <!-- Scheme 7 -->
+          <article class="scheme-card" data-category="youth">
+            <div class="scheme-icon">👧</div>
+            <span class="scheme-type">बेटी बचाओ</span>
+            <h3>सुकन्या समृद्धि योजना</h3>
+            <p>बालिकाओं की उच्च शिक्षा व आत्मनिर्भरता हेतु उच्च ब्याज दर बचत व विवाह अनुदान।</p>
+            <div class="scheme-benefit">लाभ: ब्याज छूट व अनुदान</div>
+            <a href="#contact" class="scheme-btn">योजना विवरण ↗</a>
+          </article>
+
+          <!-- Scheme 8 -->
+          <article class="scheme-card green" data-category="kisan">
+            <div class="scheme-icon">☀️</div>
+            <span class="scheme-type">स्वच्छ ऊर्जा</span>
+            <h3>पीएम सूर्य घर मुफ्त बिजली</h3>
+            <p>घर की छत पर सौर ऊर्जा पैनल लगाने पर भारी सरकारी सब्सिडी और 300 यूनिट तक मुफ्त बिजली।</p>
+            <div class="scheme-benefit">सब्सिडी: ₹78,000 तक</div>
+            <a href="#contact" class="scheme-btn">सोलर रूफटॉप ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT PROJECTS (1 Row 2 Cards on Mobile) -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">जमीन से जुड़ा विकास</span>
+          <h2>विकास कार्य एवं प्रगति रिपोर्ट</h2>
+          <div class="jhalar-divider">
+            <span class="jhalar-line"></span>
+            <span class="jhalar-icon">❖</span>
+            <span class="jhalar-line right"></span>
+          </div>
+          <p>ग्राम पंचायत निधि और 15वें वित्त आयोग से गांव में स्वीकृत व पूर्ण परियोजनाओं का विवरण।</p>
+        </div>
+
+        <!-- Horizontal Scrollable Status Chips -->
+        <div class="chips-filter-wrapper">
+          <button class="chip-btn active" data-status="all">सभी कार्य (6)</button>
+          <button class="chip-btn" data-status="completed">✓ पूर्ण कार्य (4)</button>
+          <button class="chip-btn" data-status="ongoing">⏳ प्रगति पर (1)</button>
+          <button class="chip-btn" data-status="sanctioned">📋 प्रस्तावित (1)</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card" data-projectstatus="completed">
+            <div class="project-img-wrap">
+              <img loading="lazy" src="images/village_road_dev.jpg" alt="सीसी रोड व सोलर लाइट">
+              <span class="project-status-tag status-completed">✓ पूर्ण 100%</span>
+              <span class="project-budget-tag">₹14.50 लाख</span>
+            </div>
+            <div class="project-body">
+              <span class="project-category">सड़क व नाली</span>
+              <h3>वार्ड 2 से 8 तक मुख्य मार्ग सीसी ढलाई</h3>
+              <p>गांव के मुख्य मार्ग पर 1.8 किमी कंक्रीट सड़क, कवर्ड नाली व 25 सोलर लाइटें।</p>
+              <div class="progress-bar-wrap">
+                <div class="progress-labels">
+                  <span>प्रगति</span>
+                  <span>100% पूर्ण</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+              <div class="project-footer">
+                <span>📍 मुख्य मार्ग</span>
+                <a href="#contact">विवरण ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card" data-projectstatus="completed">
+            <div class="project-img-wrap">
+              <img loading="lazy" src="images/jal_jeevan_water.jpg" alt="पेयजल आपूर्ति">
+              <span class="project-status-tag status-completed">✓ पूर्ण 100%</span>
+              <span class="project-budget-tag">₹22.80 लाख</span>
+            </div>
+            <div class="project-body">
+              <span class="project-category">पेयजल मिशन</span>
+              <h3>अमृत धारा सामुदायिक जल शोधन संयंत्र</h3>
+              <p>ओवरहेड टैंक व 480 ग्रामीण परिवारों को सीधे नल से शुद्ध जल की आपूर्ति।</p>
+              <div class="progress-bar-wrap">
+                <div class="progress-labels">
+                  <span>प्रगति</span>
+                  <span>100% पूर्ण</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+              <div class="project-footer">
+                <span>📍 पंचायत परिसर</span>
+                <a href="#contact">विवरण ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card" data-projectstatus="completed">
+            <div class="project-img-wrap">
+              <img loading="lazy" src="images/digital_panchayat.jpg" alt="डिजिटल सेवा केंद्र">
+              <span class="project-status-tag status-completed">✓ पूर्ण 100%</span>
+              <span class="project-budget-tag">₹4.20 लाख</span>
+            </div>
+            <div class="project-body">
+              <span class="project-category">डिजिटल पंचायत</span>
+              <h3>सचिवालय में 'डिजिटल सेवा केंद्र' स्थापना</h3>
+              <p>कंप्यूटर, इंटरनेट युक्त केंद्र जहां आय, जाति, निवास व खतौनी सेवाएं उपलब्ध।</p>
+              <div class="progress-bar-wrap">
+                <div class="progress-labels">
+                  <span>प्रगति</span>
+                  <span>100% पूर्ण</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+              <div class="project-footer">
+                <span>📍 सचिवालय</span>
+                <a href="#contact">विवरण ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card" data-projectstatus="completed">
+            <div class="project-img-wrap">
+              <img loading="lazy" src="images/primary_school.jpg" alt="प्राथमिक विद्यालय">
+              <span class="project-status-tag status-completed">✓ पूर्ण 100%</span>
+              <span class="project-budget-tag">₹8.60 लाख</span>
+            </div>
+            <div class="project-body">
+              <span class="project-category">शिक्षा कायाकल्प</span>
+              <h3>प्राथमिक विद्यालय कायाकल्प व स्मार्ट क्लास</h3>
+              <p>रंगाई-पुताई, टाइलीकरण, बालक-बालिका शौचालय, वाटर कूलर व स्मार्ट टीवी।</p>
+              <div class="progress-bar-wrap">
+                <div class="progress-labels">
+                  <span>प्रगति</span>
+                  <span>100% पूर्ण</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+              <div class="project-footer">
+                <span>📍 कन्या विद्यालय</span>
+                <a href="#contact">विवरण ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="project-card" data-projectstatus="ongoing">
+            <div class="project-img-wrap">
+              <img loading="lazy" src="images/ayushman_arogya.jpg" alt="आयुष्मान आरोग्य मंदिर">
+              <span class="project-status-tag status-ongoing">⏳ 75% प्रगति</span>
+              <span class="project-budget-tag">₹11.20 लाख</span>
+            </div>
+            <div class="project-body">
+              <span class="project-category">स्वास्थ्य सेवा</span>
+              <h3>आयुष्मान आरोग्य मंदिर उपकेंद्र निर्माण</h3>
+              <p>प्राथमिक उपचार, नियमित बीपी/शुगर जांच व मातृत्व सुरक्षा जांच केंद्र।</p>
+              <div class="progress-bar-wrap">
+                <div class="progress-labels">
+                  <span>प्रगति</span>
+                  <span>75% प्रगति</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill amber" style="width: 75%;"></div>
+                </div>
+              </div>
+              <div class="project-footer">
+                <span>📍 उत्तरी टोला</span>
+                <a href="#contact">विवरण ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project-card" data-projectstatus="sanctioned">
+            <div class="project-img-wrap">
+              <img loading="lazy" src="images/village_hero.jpg" alt="अमृत सरोवर">
+              <span class="project-status-tag status-sanctioned">📋 स्वीकृत</span>
+              <span class="project-budget-tag">₹18.00 लाख</span>
+            </div>
+            <div class="project-body">
+              <span class="project-category">अमृत सरोवर</span>
+              <h3>ऐतिहासिक तालाब जीर्णोद्धार व ओपन जिम</h3>
+              <p>तालाब सौंदर्यीकरण, पक्का वॉकिंग ट्रैक, वृक्षारोपण और युवा वॉलीबॉल मैदान।</p>
+              <div class="progress-bar-wrap">
+                <div class="progress-labels">
+                  <span>प्रगति</span>
+                  <span>डीपीआर स्वीकृत</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill amber" style="width: 25%;"></div>
+                </div>
+              </div>
+              <div class="project-footer">
+                <span>📍 दक्षिण टोला</span>
+                <a href="#contact">विवरण ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAM SABHA & NOTICES -->
+    <section class="section section-light-green" id="notices">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">ग्राम सभा एवं जन-संवाद</span>
+          <h2>सार्वजनिक सूचना पट्ट (Notice Board)</h2>
+          <div class="jhalar-divider">
+            <span class="jhalar-line"></span>
+            <span class="jhalar-icon">❖</span>
+            <span class="jhalar-line right"></span>
+          </div>
+          <p>ग्राम सभा की आगामी बैठकों और महत्वपूर्ण सरकारी शिविरों की ताजा सूचनाएं।</p>
+        </div>
+
+        <div class="notices-grid">
+          <!-- Featured Notice -->
+          <article class="notice-feature-card">
+            <div class="notice-feature-img">
+              <img src="images/panchayat_sabha.jpg" alt="ग्राम सभा बैठक">
+            </div>
+            <div class="notice-feature-body">
+              <span class="notice-badge">📢 आगामी बैठक · अति महत्वपूर्ण</span>
+              <h3>वार्षिक ग्राम सभा बैठक एवं विकास योजना (GPDP) पर चर्चा</h3>
+              <p>
+                आगामी वित्तीय वर्ष के विकास कार्यों, नाली-खड़ंजा निर्माण, सोलर लाइट व राशन कार्ड सत्यापन हेतु विशेष खुली बैठक आयोजित की गई है।
+              </p>
+              <div style="display:flex; gap:14px; font-size:0.82rem; color:var(--text-muted); font-weight:700; margin-bottom:14px; flex-wrap:wrap;">
+                <span>📅 15 नवंबर 2026</span>
+                <span>⏰ पूर्वाह्न 11:00 बजे</span>
+                <span>📍 पंचायत सचिवालय</span>
+              </div>
+              <a href="#contact" class="btn btn-primary btn-sm">सुझाव भेजें ↗</a>
+            </div>
+          </article>
+
+          <!-- List of Notices -->
+          <div class="notice-list-container">
+            <div class="notice-item">
+              <div class="notice-date-box">
+                <span class="notice-date-day">08</span>
+                <span class="notice-date-month">नवंबर</span>
+              </div>
+              <div class="notice-content">
+                <h4>निःशुल्क स्वास्थ्य व आयुष्मान कार्ड शिविर</h4>
+                <p>प्राथमिक स्वास्थ्य उपकेंद्र पर अनुभवी डॉक्टरों द्वारा जांच व नए कार्ड।</p>
+              </div>
+            </div>
+
+            <div class="notice-item">
+              <div class="notice-date-box">
+                <span class="notice-date-day">12</span>
+                <span class="notice-date-month">नवंबर</span>
+              </div>
+              <div class="notice-content">
+                <h4>राशन कार्ड ई-केवाईसी सत्यापन दिवस</h4>
+                <p>उचित दर विक्रेता की दुकान पर सभी सदस्यों का बायोमेट्रिक सत्यापन।</p>
+              </div>
+            </div>
+
+            <div class="notice-item">
+              <div class="notice-date-box">
+                <span class="notice-date-day">18</span>
+                <span class="notice-date-month">नवंबर</span>
+              </div>
+              <div class="notice-content">
+                <h4>रबी फसल उन्नत बीज व खाद वितरण</h4>
+                <p>गेहूं व सरसों के प्रमाणित बीज पैक्स गोदाम पर 50% अनुदान पर।</p>
+              </div>
+            </div>
+
+            <div class="notice-item">
+              <div class="notice-date-box">
+                <span class="notice-date-day">22</span>
+                <span class="notice-date-month">नवंबर</span>
+              </div>
+              <div class="notice-content">
+                <h4>स्वच्छ गांव विशेष स्वच्छता अभियान</h4>
+                <p>वार्ड स्तर पर नाली सफाई व कीटनाशक छिड़काव जन-अभियान।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY (Strictly 2 cards per row on mobile) -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">तस्वीरों में हमारा गांव</span>
+          <h2>फोटो गैलरी एवं झलकियां</h2>
+          <div class="jhalar-divider">
+            <span class="jhalar-line"></span>
+            <span class="jhalar-icon">❖</span>
+            <span class="jhalar-line right"></span>
+          </div>
+          <p>ग्राम विकास और जन-भागीदारी की झलकियां। बड़ी तस्वीर देखने के लिए फोटो छुएं।</p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Item 1 Big -->
+          <div class="gallery-item span-2" data-fullimg="images/panchayat_sabha.jpg" data-caption="ग्राम सभा की खुली बैठक में ग्रामीणों के साथ विकास पर विचार-विमर्श">
+            <img loading="lazy" src="images/panchayat_sabha.jpg" alt="ग्राम सभा बैठक">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">#ग्रामसभा #लोकतंत्र</span>
+              <span class="gallery-caption">ग्राम सभा बैठक में सामूहिक निर्णय</span>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="gallery-item" data-fullimg="images/village_hero.jpg" data-caption="हमारे आदर्श गांव का मनोरम दृश्य, पक्की सड़कें और हरियाली">
+            <img loading="lazy" src="images/village_hero.jpg" alt="गांव का दृश्य">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">#हमारागांव</span>
+              <span class="gallery-caption">गांव की सुबह और लहलहाते खेत</span>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="gallery-item" data-fullimg="images/jal_jeevan_water.jpg" data-caption="जल जीवन मिशन: हर घर को शुद्ध पेयजल आपूर्ति">
+            <img loading="lazy" src="images/jal_jeevan_water.jpg" alt="जल जीवन मिशन">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">#जलजीवनमिशन</span>
+              <span class="gallery-caption">हर घर नल से शुद्ध जल आपूर्ति</span>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="gallery-item" data-fullimg="images/digital_panchayat.jpg" data-caption="डिजिटल सेवा केंद्र में ग्रामीण युवाओं व किसानों को ऑनलाइन सेवाएं">
+            <img loading="lazy" src="images/digital_panchayat.jpg" alt="डिजिटल सेवा केंद्र">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">#डिजिटलपंचायत</span>
+              <span class="gallery-caption">सचिवालय में ई-सेवा केंद्र</span>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="gallery-item" data-fullimg="images/primary_school.jpg" data-caption="प्राथमिक विद्यालय कायाकल्प: संवरता नौनिहालों का भविष्य">
+            <img loading="lazy" src="images/primary_school.jpg" alt="प्राथमिक विद्यालय">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">#शिक्षा</span>
+              <span class="gallery-caption">स्मार्ट प्राथमिक विद्यालय</span>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="gallery-item" data-fullimg="images/ayushman_arogya.jpg" data-caption="आयुष्मान आरोग्य मंदिर में ग्रामीणों के स्वास्थ्य की जांच">
+            <img loading="lazy" src="images/ayushman_arogya.jpg" alt="आयुष्मान आरोग्य मंदिर">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">#स्वास्थ्य</span>
+              <span class="gallery-caption">आरोग्य मंदिर स्वास्थ्य शिविर</span>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="gallery-item" data-fullimg="images/village_road_dev.jpg" data-caption="आधुनिक सीसी रोड, ढकी हुई नाली और सोलर स्ट्रीट लाइटें">
+            <img loading="lazy" src="images/village_road_dev.jpg" alt="सड़क निर्माण">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">#सौरऊर्जा</span>
+              <span class="gallery-caption">पक्की सड़क व सोलर रोशनी</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPRESENTATIVES (Strictly 2 cards per row on mobile) -->
+    <section class="section section-light-green" id="reps">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">पंचायत नेतृत्व</span>
+          <h2>पंचायत प्रतिनिधि एवं दल</h2>
+          <div class="jhalar-divider">
+            <span class="jhalar-line"></span>
+            <span class="jhalar-icon">❖</span>
+            <span class="jhalar-line right"></span>
+          </div>
+          <p>आपकी सेवा में समर्पित पंचायत प्रतिनिधि एवं शासकीय सहयोगी।</p>
+        </div>
+
+        <div class="reps-grid">
+          <!-- Mukhiya -->
+          <article class="rep-card">
+            <div class="rep-avatar">
+              <img src="images/mukhiya_portrait.jpg" alt="श्री राम प्रसाद">
+            </div>
+            <h3 id="repMukhiyaTitle">श्री राम प्रसाद</h3>
+            <div class="rep-role">मुखिया / ग्राम प्रधान</div>
+            <a href="tel:+919876543210" class="rep-contact">📞 कॉल करें</a>
+          </article>
+
+          <!-- Up-Mukhiya -->
+          <article class="rep-card">
+            <div class="rep-avatar">
+              <div class="rep-avatar-icon">👩‍💼</div>
+            </div>
+            <h3>श्रीमती कौशल्या देवी</h3>
+            <div class="rep-role">उप-मुखिया / उप-सरपंच</div>
+            <div class="rep-contact">वार्ड नं. 04</div>
+          </article>
+
+          <!-- Panchayat Secretary -->
+          <article class="rep-card">
+            <div class="rep-avatar">
+              <div class="rep-avatar-icon">📋</div>
+            </div>
+            <h3>श्री दिनेश कुमार वर्मा</h3>
+            <div class="rep-role">पंचायत सचिव (VDO)</div>
+            <div class="rep-contact">सोम/बुध/शुक्र</div>
+          </article>
+
+          <!-- Panchayat Sahayak -->
+          <article class="rep-card">
+            <div class="rep-avatar">
+              <div class="rep-avatar-icon">💻</div>
+            </div>
+            <h3>श्री राजेश कुमार</h3>
+            <div class="rep-role">पंचायत सहायक (CSC)</div>
+            <div class="rep-contact">10 AM - 5 PM</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITIZEN GRIEVANCE SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info-col">
+          <span class="eyebrow" style="background:rgba(255,255,255,0.15); color:#fde047; border-color:rgba(255,255,255,0.3);">
+            सीधा जनसंवाद
+          </span>
+          <h2>आपकी समस्या, हमारा समाधान। अपना सुझाव सीधे भेजें।</h2>
+          <p>
+            गांव के किसी भी कार्य, नाली, सड़क, पेयजल, स्ट्रीट लाइट, राशन या पेंशन से संबंधित समस्या या सुझाव के लिए नीचे दिया गया फॉर्म भरें। संदेश सीधे मुखिया जी के WhatsApp पर पहुंच जाएगा।
+          </p>
+
+          <div class="contact-card-box">
+            <div class="contact-row">
+              <div class="contact-icon-box">📞</div>
+              <div class="contact-row-text">
+                <small>आधिकारिक संपर्क नंबर</small>
+                <strong id="contactPhoneDisplay">+91 98765 43210</strong>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-icon-box">💬</div>
+              <div class="contact-row-text">
+                <small>WhatsApp जन-सुनवाई</small>
+                <strong id="contactWhatsappDisplay">+91 98765 43210 (24x7)</strong>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-icon-box">📍</div>
+              <div class="contact-row-text">
+                <small>पंचायत सचिवालय कार्यालय</small>
+                <strong id="contactAddressDisplay">ग्राम पंचायत भवन आदर्शपुर, ब्लॉक सदर, वाराणसी</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Grievance Form -->
+        <div class="form-container">
+          <div class="form-header">
+            <h3>ऑनलाइन जन-शिकायत एवं सुझाव</h3>
+            <p>फॉर्म सबमिट करते ही आपका विवरण WhatsApp संदेश के रूप में तैयार हो जाएगा।</p>
+          </div>
+
+          <form id="grievanceForm">
+            <div class="form-grid-fields">
+              <div class="field-group">
+                <label for="citizenName">आपका नाम *</label>
+                <input type="text" id="citizenName" required placeholder="जैसे: रमेश कुमार">
+              </div>
+
+              <div class="field-group">
+                <label for="citizenPhone">मोबाइल नंबर (10 अंक) *</label>
+                <input type="tel" id="citizenPhone" required pattern="[0-9]{10}" maxlength="10" placeholder="9876543210">
+              </div>
+
+              <div class="field-group">
+                <label for="citizenWard">वार्ड नंबर / टोला *</label>
+                <input type="text" id="citizenWard" required placeholder="जैसे: वार्ड 04, नई बस्ती">
+              </div>
+
+              <div class="field-group">
+                <label for="grievanceType">समस्या / सुझाव श्रेणी *</label>
+                <select id="grievanceType" required>
+                  <option value="सड़क एवं नाली निर्माण/मरम्मत">सड़क एवं नाली निर्माण/मरम्मत</option>
+                  <option value="पेयजल एवं चापाकल/नल सुधार">पेयजल एवं चापाकल/नल सुधार</option>
+                  <option value="सोलर स्ट्रीट लाइट खराब/नई मांग">सोलर स्ट्रीट लाइट खराब/नई मांग</option>
+                  <option value="राशन वितरण एवं खाद्य सुरक्षा">राशन वितरण एवं खाद्य सुरक्षा</option>
+                  <option value="प्रधानमंत्री आवास योजना संबंधित">प्रधानमंत्री आवास योजना संबंधित</option>
+                  <option value="पेंशन (वृद्धा/विधवा/दिव्यांग)">पेंशन (वृद्धा/विधवा/दिव्यांग)</option>
+                  <option value="सफाई एवं स्वच्छता समस्या">सफाई एवं स्वच्छता समस्या</option>
+                  <option value="गांव के विकास हेतु नया सुझाव">गांव के विकास हेतु नया सुझाव</option>
+                  <option value="अन्य विषय">अन्य विषय</option>
+                </select>
+              </div>
+
+              <div class="field-group field-full">
+                <label for="grievanceDesc">समस्या या सुझाव का विवरण *</label>
+                <textarea id="grievanceDesc" required placeholder="कृपया अपनी समस्या का स्थान व विवरण स्पष्ट शब्दों में लिखें..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-saffron" style="width:100%; min-height:48px;">
+                <span>💬 WhatsApp पर भेजें (टोकन सहित) ↗</span>
+              </button>
+              <small style="color:var(--text-muted); font-size:0.72rem; text-align:center;">
+                🔒 आपकी जानकारी पूर्णतः सुरक्षित है और समाधान हेतु उपयोग की जाएगी।
+              </small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-group">
+            <div class="brand-emblem">🌾</div>
+            <div class="brand-titles">
+              <span class="brand-main">ग्राम पंचायत आदर्शपुर</span>
+              <span style="color:#fde047; font-size:0.74rem; font-weight:700;">पंचायती राज विभाग</span>
+            </div>
+          </div>
+          <p>
+            ग्राम पंचायत के सर्वांगीण विकास, पारदर्शिता और जनसेवा को समर्पित डिजिटल मंच।
+          </p>
+          <div style="display:flex; gap:10px;">
+            <a href="tel:+919876543210" class="btn btn-outline-white btn-sm" id="footerCallBtn">📞 कॉल करें</a>
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="btn btn-saffron btn-sm" id="footerWhatsappBtn">💬 WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>महत्वपूर्ण लिंक</h4>
+          <ul>
+            <li><a href="#home">होम पेज</a></li>
+            <li><a href="#schemes">सरकारी योजनाएं</a></li>
+            <li><a href="#projects">विकास कार्य रिपोर्ट</a></li>
+            <li><a href="#notices">ग्राम सभा सूचनाएं</a></li>
+            <li><a href="#gallery">फोटो गैलरी</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>सरकारी वेब पोर्टल</h4>
+          <ul>
+            <li><a href="https://egramswaraj.gov.in" target="_blank" rel="noopener">ई-ग्राम स्वराज पोर्टल ↗</a></li>
+            <li><a href="https://pmkisan.gov.in" target="_blank" rel="noopener">पीएम किसान सम्मान निधि ↗</a></li>
+            <li><a href="https://pmayg.nic.in" target="_blank" rel="noopener">प्रधानमंत्री आवास योजना ↗</a></li>
+            <li><a href="https://jaljeevanmission.gov.in" target="_blank" rel="noopener">जल जीवन मिशन ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="disclaimer-text">
+          अस्वीकरण: यह वेबसाइट ग्राम पंचायत के जनप्रतिनिधि (मुखिया) एवं ग्रामीणों के मध्य सूचना व जन-संवाद सुगम बनाने हेतु निर्मित जनसंपर्क पोर्टल है।
+        </div>
+        <div>
+          © <span id="currentYear">2026</span> ग्राम पंचायत आदर्शपुर
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE NATIVE APP BOTTOM DOCK NAVIGATION -->
+  <nav class="mobile-app-dock" aria-label="मोबाइल नेविगेशन">
+    <div class="dock-items-row">
+      <a href="#home" class="dock-nav-item active">
+        <span class="dock-icon">🏠</span>
+        <span>होम</span>
+      </a>
+      <a href="#schemes" class="dock-nav-item">
+        <span class="dock-icon">📜</span>
+        <span>योजनाएं</span>
+      </a>
+      <a href="#projects" class="dock-nav-item">
+        <span class="dock-icon">🚜</span>
+        <span>विकास</span>
+      </a>
+      <a href="#contact" class="dock-nav-item highlight">
+        <span class="dock-icon">📋</span>
+        <span>शिकायत</span>
+      </a>
+      <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="dock-nav-item" id="dockWhatsappBtn">
+        <span class="dock-icon">💬</span>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toastBox" role="status" aria-live="polite"></div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="फोटो देखें">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxCloseBtn" aria-label="बंद करें">×</button>
+      <img id="lightboxImg" src="" alt="बड़ी तस्वीर">
+      <div class="lightbox-caption" id="lightboxText"></div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONFIGURATION -->
+  <script>
+    const CONFIG = {
+      siteTitle: "ग्राम पंचायत आदर्शपुर",
+      mukhiyaName: "श्री राम प्रसाद",
+      village: "आदर्शपुर",
+      block: "सदर",
+      district: "वाराणसी",
+      state: "उत्तर प्रदेश",
+      phoneDisplay: "+91 98765 43210",
+      phoneDial: "+919876543210",
+      whatsappNumber: "919876543210",
+      email: "panchayat.adarshpur@example.com",
+      address: "ग्राम पंचायत भवन आदर्शपुर, ब्लॉक सदर, जनपद वाराणसी, उत्तर प्रदेश",
+      portraitPhoto: "images/mukhiya_portrait.jpg"
+    };
+
+    document.title = `${CONFIG.siteTitle} | ${CONFIG.mukhiyaName} (मुखिया / ग्राम प्रधान)`;
+
+    function updateText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    updateText("topPhone", CONFIG.phoneDisplay);
+    updateText("topLocation", `ग्राम पंचायत ${CONFIG.village} · ब्लॉक ${CONFIG.block} · ${CONFIG.district}`);
+    updateText("brandTitle", `ग्राम पंचायत ${CONFIG.village}`);
+    updateText("brandDistrict", `जनपद ${CONFIG.district}, ${CONFIG.state}`);
+    updateText("heroVillageName", CONFIG.village);
+    updateText("heroMukhiyaName", CONFIG.mukhiyaName);
+    updateText("heroBlockDistrict", `ब्लॉक ${CONFIG.block}, ${CONFIG.district}`);
+    updateText("cardMukhiyaName", CONFIG.mukhiyaName);
+    updateText("cardVillageName", CONFIG.village);
+    updateText("aboutVillageHighlight", CONFIG.village);
+    updateText("repMukhiyaTitle", CONFIG.mukhiyaName);
+    updateText("contactPhoneDisplay", CONFIG.phoneDisplay);
+    updateText("contactWhatsappDisplay", `${CONFIG.phoneDisplay} (24x7)`);
+    updateText("contactAddressDisplay", CONFIG.address);
+    updateText("currentYear", new Date().getFullYear());
+
+    const whatsappLink = `https://wa.me/${CONFIG.whatsappNumber}`;
+    const callLink = `tel:${CONFIG.phoneDial}`;
+
+    ["navWhatsappBtn", "cardWhatsappBtn", "footerWhatsappBtn", "dockWhatsappBtn"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = whatsappLink;
+    });
+
+    ["callDirectBtn", "footerCallBtn"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = callLink;
+    });
+
+    const portraitImg = document.getElementById("mainMukhiyaPortrait");
+    if (portraitImg) portraitImg.src = CONFIG.portraitPhoto;
+
+    function showToast(msg) {
+      const toast = document.getElementById("toastBox");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3200);
+    }
+
+    // Mobile Hamburger Menu
+    const navMenu = document.getElementById("navMenu");
+    const menuToggleBtn = document.getElementById("menuToggleBtn");
+    menuToggleBtn.addEventListener("click", () => {
+      const isOpen = navMenu.classList.toggle("open");
+      menuToggleBtn.setAttribute("aria-expanded", String(isOpen));
+      menuToggleBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navMenu.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        menuToggleBtn.setAttribute("aria-expanded", "false");
+        menuToggleBtn.textContent = "☰";
+      });
+    });
+
+    // Mobile Bottom Dock active tab indicator
+    const dockItems = document.querySelectorAll(".dock-nav-item");
+    dockItems.forEach(item => {
+      item.addEventListener("click", () => {
+        if (!item.id.includes("Whatsapp")) {
+          dockItems.forEach(d => d.classList.remove("active"));
+          item.classList.add("active");
+        }
+      });
+    });
+
+    // Projects Filter
+    const filterBtns = document.querySelectorAll(".chip-btn[data-status]");
+    const projectCards = document.querySelectorAll(".project-card");
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const status = btn.getAttribute("data-status");
+        projectCards.forEach(card => {
+          if (status === "all" || card.getAttribute("data-projectstatus") === status) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+
+    // Schemes Filter
+    const schemeTabs = document.querySelectorAll(".chip-btn[data-schemefilter]");
+    const schemeCards = document.querySelectorAll(".scheme-card");
+    schemeTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        schemeTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        const category = tab.getAttribute("data-schemefilter");
+        schemeCards.forEach(card => {
+          if (category === "all" || card.getAttribute("data-category") === category) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+
+    // Photo Gallery Lightbox Viewer
+    const lightbox = document.getElementById("imageLightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxText = document.getElementById("lightboxText");
+    const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+
+    document.querySelectorAll(".gallery-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const fullImg = item.getAttribute("data-fullimg");
+        const caption = item.getAttribute("data-caption");
+        lightboxImg.src = fullImg;
+        lightboxText.textContent = caption || "";
+        lightbox.classList.add("active");
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+    }
+
+    lightboxCloseBtn.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+
+    // Citizen Grievance Form & WhatsApp Direct Token Generator
+    document.getElementById("grievanceForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById("citizenName").value.trim();
+      const phone = document.getElementById("citizenPhone").value.trim();
+      const ward = document.getElementById("citizenWard").value.trim();
+      const type = document.getElementById("grievanceType").value;
+      const desc = document.getElementById("grievanceDesc").value.trim();
+
+      if (!/^[0-9]{10}$/.test(phone)) {
+        showToast("कृपया 10 अंकों का वैध मोबाइल नंबर दर्ज करें।");
+        return;
+      }
+
+      const randomId = Math.floor(1000 + Math.random() * 9000);
+      const tokenNumber = `GP-ADR-${new Date().getFullYear()}-${randomId}`;
+
+      const messageText = [
+        `🚩 *ग्राम पंचायत ${CONFIG.village} - जन-शिकायत / सुझाव*`,
+        `━━━━━━━━━━━━━━━━━━`,
+        `📌 *टोकन संख्या:* ${tokenNumber}`,
+        `👤 *नाम:* ${name}`,
+        `📞 *मोबाइल:* ${phone}`,
+        `🏡 *वार्ड:* ${ward}`,
+        `📋 *श्रेणी:* ${type}`,
+        `📝 *विवरण:*`,
+        `${desc}`,
+        `━━━━━━━━━━━━━━━━━━`,
+        `निवेदक: ग्राम पंचायत जनसंपर्क ऐप पोर्टल`
+      ].join("\n");
+
+      const targetUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(messageText)}`;
+      window.open(targetUrl, "_blank", "noopener");
+
+      showToast(`शिकायत टोकन #${tokenNumber} जेनरेट हो गया! WhatsApp खुल रहा है...`);
+      this.reset();
+    });
+  </script>
+</body>
 </html>
