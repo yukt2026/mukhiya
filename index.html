@@ -1163,6 +1163,41 @@
       box-shadow: 0 0 0 3px rgba(12, 74, 52, 0.1);
     }
     textarea.form-control { resize: vertical; min-height: 80px; }
+    select.form-control { cursor: pointer; }
+    .enquiry-type-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .enquiry-type-label {
+      cursor: pointer;
+      margin: 0;
+    }
+    .enquiry-type-label input {
+      display: none;
+    }
+    .type-pill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 10px;
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-align: center;
+      color: #475569;
+      transition: all 0.2s ease;
+    }
+    .enquiry-type-label input:checked + .type-pill {
+      background: #ecfdf5;
+      border-color: #059669;
+      color: #065f46;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.2);
+    }
 
     /* ========================================================
        FOOTER
@@ -1831,6 +1866,21 @@
           </p>
 
           <form id="grievanceForm" onsubmit="sendGrievance(event)">
+            <!-- Enquiry / Message Type Selector -->
+            <div class="form-group">
+              <label>संदेश का प्रकार *</label>
+              <div class="enquiry-type-tabs">
+                <label class="enquiry-type-label">
+                  <input type="radio" name="cType" value="समस्या (शिकायत)" checked>
+                  <span class="type-pill">⚠️ समस्या / शिकायत</span>
+                </label>
+                <label class="enquiry-type-label">
+                  <input type="radio" name="cType" value="सुझाव (विकास कार्य)">
+                  <span class="type-pill">💡 विकास सुझाव</span>
+                </label>
+              </div>
+            </div>
+
             <div class="form-group">
               <label for="cName">आपका पूरा नाम *</label>
               <input type="text" id="cName" class="form-control" placeholder="उदा: रमेश कुमार" required>
@@ -1848,13 +1898,32 @@
             </div>
 
             <div class="form-group">
-              <label for="cIssue">समस्या / सुझाव का विवरण *</label>
-              <textarea id="cIssue" class="form-control" placeholder="अपनी समस्या या आवश्यकता विस्तार से लिखें..." required></textarea>
+              <label for="cCategory">संबंधित विषय / योजना *</label>
+              <select id="cCategory" class="form-control" required>
+                <option value="सामान्य जन-समस्या">-- संबंधित विषय चुनें --</option>
+                <option value="🚰 हर घर नल-जल / पेयजल समस्या">🚰 हर घर नल-जल / पेयजल समस्या</option>
+                <option value="🛣️ पक्की सड़क एवं नाली निर्माण">🛣️ पक्की सड़क एवं नाली निर्माण</option>
+                <option value="🏠 पीएम आवास योजना / पक्का मकान">🏠 पीएम आवास योजना / पक्का मकान</option>
+                <option value="💡 स्ट्रीट लाइट / सोलर लाइट व्यवस्था">💡 स्ट्रीट लाइट / सोलर लाइट व्यवस्था</option>
+                <option value="🌾 किसान सम्मान निधि / कृषि सहायता">🌾 किसान सम्मान निधि / कृषि सहायता</option>
+                <option value="👴 वृद्धा / विधवा / दिव्यांग पेंशन">👴 वृद्धा / विधवा / दिव्यांग पेंशन</option>
+                <option value="🍚 राशन कार्ड / जनवितरण प्रणाली">🍚 राशन कार्ड / जनवितरण प्रणाली</option>
+                <option value="🧹 गांव में साफ-सफाई व स्वच्छता">🧹 गांव में साफ-सफाई व स्वच्छता</option>
+                <option value="✍️ अन्य कोई व्यक्तिगत समस्या या सुझाव">✍️ अन्य कोई व्यक्तिगत समस्या या सुझाव</option>
+              </select>
             </div>
 
-            <button type="submit" class="btn btn-whatsapp" style="width: 100%; padding: 12px; font-size: 0.95rem;">
-              <span>📲 सीधे व्हाट्सएप पर समस्या भेजें</span>
+            <div class="form-group">
+              <label for="cIssue">समस्या / सुझाव का पूरा विवरण *</label>
+              <textarea id="cIssue" rows="3" class="form-control" placeholder="अपनी समस्या, टोला/मुहल्ला या सुझाव विस्तार से लिखें..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp" id="submitGrievanceBtn" style="width: 100%; padding: 13px; font-size: 0.95rem; font-weight: 800; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <span>📲 सीधे व्हाट्सएप पर समस्या/सुझाव भेजें</span>
             </button>
+            <p style="font-size: 0.72rem; color: #64748b; text-align: center; margin-top: 8px; margin-bottom: 0;">
+              🔒 सबमिट करते ही मुखिया श्री राजेश यादव (+91 95347 47342) का व्हाट्सएप चैट खुल जाएगा।
+            </p>
           </form>
         </div>
 
@@ -1950,23 +2019,61 @@
       if (e.key === 'Escape') closeLightboxDirect();
     });
 
-    // Send Grievance via WhatsApp
+    // Send Grievance / Suggestion directly to Mukhiya Ji's WhatsApp
     function sendGrievance(e) {
       e.preventDefault();
+
+      const typeElem = document.querySelector('input[name="cType"]:checked');
+      const type = typeElem ? typeElem.value : 'समस्या (शिकायत)';
       const name = document.getElementById('cName').value.trim();
       const ward = document.getElementById('cWard').value.trim();
       const mobile = document.getElementById('cMobile').value.trim();
+      const categoryElem = document.getElementById('cCategory');
+      const category = (categoryElem && categoryElem.value) ? categoryElem.value : 'सामान्य जन-समस्या';
       const issue = document.getElementById('cIssue').value.trim();
 
-      const message = `*ग्राम पंचायत राज सीहमा - जन-शिकायत*%0A%0A` +
-        `👤 *नाम:* ${encodeURIComponent(name)}%0A` +
-        `📍 *वार्ड नंबर:* ${encodeURIComponent(ward)}%0A` +
-        `📱 *मोबाइल:* ${encodeURIComponent(mobile)}%0A%0A` +
-        `📝 *समस्या / विवरण:*%0A${encodeURIComponent(issue)}%0A%0A` +
-        `_कृपया संज्ञान लेकर समाधान कराने की कृपा करें।_`;
+      if (!name || !ward || !mobile || !issue) {
+        alert('कृपया सभी आवश्यक जानकारी भरें!');
+        return;
+      }
 
-      const whatsappUrl = `https://wa.me/919534747342?text=${message}`;
-      window.open(whatsappUrl, '_blank');
+      // Professional Structured WhatsApp Message
+      const message = 
+`🏛️ *ग्राम पंचायत राज सीहमा - जन-पोर्टल*
+━━━━━━━━━━━━━━━━━━━━
+📌 *प्रकार:* ${type}
+👤 *नागरिक का नाम:* ${name}
+📍 *वार्ड नंबर:* ${ward}
+📱 *मोबाइल नंबर:* ${mobile}
+📂 *संबंधित विषय:* ${category}
+━━━━━━━━━━━━━━━━━━━━
+📝 *समस्या / सुझाव का विवरण:*
+${issue}
+━━━━━━━━━━━━━━━━━━━━
+🙏 _मुखिया श्री राजेश यादव जी, कृपया संज्ञान लेने की कृपा करें।_`;
+
+      const whatsappNumber = '919534747342';
+      const encodedMsg = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMsg}`;
+
+      // Instant button feedback
+      const btn = document.getElementById('submitGrievanceBtn');
+      if (btn) {
+        const origHTML = btn.innerHTML;
+        btn.innerHTML = '<span>✅ व्हाट्सएप खुल रहा है...</span>';
+        setTimeout(() => { btn.innerHTML = origHTML; }, 3500);
+      }
+
+      // Open WhatsApp safely (works across Android, iOS, Windows, Mac)
+      const link = document.createElement('a');
+      link.href = whatsappUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => {
+        if (link.parentNode) link.parentNode.removeChild(link);
+      }, 150);
     }
   </script>
 </body>
